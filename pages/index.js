@@ -7,7 +7,7 @@ export const VaseList = [
   [1, "Red Vase", "Vase Subtext", "Vase Thumbnail"],
   [2, "White Vase", "Vase Subtext", "Vase Thumbnail"],
   [3, "Yellow Vase", "Vase Subtext", "Vase Thumbnail"]
-];
+  ];
 
 export const FlowerList = [
   [
@@ -28,6 +28,36 @@ export const FlowerList = [
       "Flower Three",
       "Flower Description",
       "Flower Thumbnail"
+    ],
+    [
+      4,
+      "Flower Four",
+      "Flower Description",
+      "Flower Thumbnail"
+    ],
+    [
+      5,
+      "Flower Five",
+      "Flower Description",
+      "Flower Thumbnail"
+    ],
+    [
+      6,
+      "Flower Six",
+      "Flower Description",
+      "Flower Thumbnail"
+    ],
+    [
+      7,
+      "Flower Seven",
+      "Flower Description",
+      "Flower Thumbnail"
+    ],
+    [
+      8,
+      "Flower Eight",
+      "Flower Description",
+      "Flower Thumbnail"
     ]
   ],
   [
@@ -66,6 +96,48 @@ export const FlowerList = [
     [
       3,
       "Flower Three",
+      "Flower Description",
+      "Flower Thumbnail"
+    ],
+    [
+      4,
+      "Flower Four",
+      "Flower Description",
+      "Flower Thumbnail"
+    ],
+    [
+      5,
+      "Flower Five",
+      "Flower Description",
+      "Flower Thumbnail"
+    ],
+    [
+      6,
+      "Flower Six",
+      "Flower Description",
+      "Flower Thumbnail"
+    ],
+    [
+      7,
+      "Flower Seven",
+      "Flower Description",
+      "Flower Thumbnail"
+    ],
+    [
+      8,
+      "Flower Eight",
+      "Flower Description",
+      "Flower Thumbnail"
+    ],
+    [
+      9,
+      "Flower Nine",
+      "Flower Description",
+      "Flower Thumbnail"
+    ],
+    [
+      10,
+      "Flower Ten",
       "Flower Description",
       "Flower Thumbnail"
     ]
@@ -73,6 +145,8 @@ export const FlowerList = [
 ];
 
 export default function Home() {
+
+
   const [vase, setVase] = useState([]);
 
 
@@ -131,36 +205,40 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <h1>
+        <div>
+        <div className={styles.branding}>
+        <h1 className={styles.title}>
           Giving Giraffe
         </h1>
-        <h3>
+        <h3 className={styles.subtitle}>
           Personalized Digital Gifting
         </h3>
+        </div>
         {step == 1 ? (
         <div className={styles.step}>
-          
           <div className={styles.information}>
-            <p>Step One</p>
-            <h2>Select a vase</h2>
-            <p> 
+            <p className={styles.stepBreadCrumb}>Step One</p>
+            <h2 className={styles.stepHeading}>Select a vase</h2>
+            <p className={styles.stepParagraph}> 
               The vase is an important often overlooked component of the
               flowering arrangement process. Be sure to choose wisely for
               the wrong vase may convey the wrong message. 
             </p>
-
+          <div className={styles.vaseList}>
             {VaseList && VaseList.map((vaseArray, i) => (
             
             <div onClick={() => {
               setVase(vaseArray[0])
               console.log(vase)
               }}>
-              {vase == i + 1 ? (
-              <strong>{vaseArray[1]}</strong> ) : <p>{vaseArray[1]}</p>}
-              <p>{vaseArray[2]}</p> 
+              {vase !== i + 1 ? (
+              <div className={styles.vaseItem}> <div className={styles.vaseImage}></div><p className={styles.vaseTitle}>{vaseArray[1]}</p> <p className={styles.vaseSubtext}>{vaseArray[2]}</p></div> ) : 
+              <div className={styles.vaseItem}> <div className={styles.vaseImage}><p className={styles.selectedLabel}>Selected</p></div><p className={styles.vaseTitle}>{vaseArray[1]}</p> <p className={styles.vaseSubtext}>{vaseArray[2]}</p></div>}
+               
             </div>
             ))}
 
+          </div>
           </div>
         </div>) : 
         (null)
@@ -170,22 +248,28 @@ export default function Home() {
         <div className={styles.step}>
           
           <div className={styles.information}>
-            <p>Step Two</p>
+            <p className={styles.stepBreadCrumb}>Step Two</p>
             
-            <h2>Select Flowers</h2>
-            <p> 
-              Select the flowers for your gift
+            <h2 className={styles.stepHeading}>Select Flowers</h2>
+            <p className={styles.stepParagraph}> 
+              Select the up to two fillers, one foliage, and one focal to include in your gift.
             </p>
+            
             {FlowerList && FlowerList.map((layerOfFlowers, layerIndex) => (
-              layerOfFlowers && layerOfFlowers.map((flower, flowerIndex) => (
+              
+            <div className={styles.flowerBed}> 
+            {layerOfFlowers && layerOfFlowers.map((flower, flowerIndex) => (
 
               
-            <div onClick={() => {
+            <div className={styles.entireFlower} onClick={() => {
               //setFlowers(flowers.splice(layerIndex, 1, flowers[layerIndex].push(FlowerList[layerIndex][flowerIndex][0])))
               if (layerIndex == 0) {
                 if (fillers.includes(flowerIndex)) {
                   setFillers(fillers.filter(indexOfFlower => indexOfFlower != flowerIndex))
-                } else {
+                } else if (fillers.length < 2) {
+                  setFillers(oldArray => [...oldArray, flowerIndex])
+                 } else {
+                  const currentFillers = fillers.pop()
                   setFillers(oldArray => [...oldArray, flowerIndex])
                  }
 
@@ -205,19 +289,38 @@ export default function Home() {
                 {(layerIndex == 0 && fillers.includes(flowerIndex)) || (layerIndex == 1 && foliage == flowerIndex) || (layerIndex == 2 && focal == flowerIndex) ? 
               (
               <div>
-                <strong>{FlowerList[layerIndex][flowerIndex][1]}</strong>
-                <p>{FlowerList[layerIndex][flowerIndex][2]}</p>
+               {(layerIndex == 0 && flowerIndex == 0) ? (<p className={styles.flowerLabel}>Fillers</p>) : 
+                (null)}
+                {(layerIndex == 1 && flowerIndex == 0) ? (<p className={styles.flowerLabel}>Foliage</p>) : 
+                (null)}
+                {(layerIndex == 2 && flowerIndex == 0) ? (<p className={styles.flowerLabel}>Focal</p>) : 
+                (null)}
+                
+                <div className={styles.tooltip}>
+                <div className={styles.flowerThumbnailSelected}></div>
+                  <span className={styles.tooltiptext}>{FlowerList[layerIndex][flowerIndex][1]}</span>
+                </div>
               </div>
               ) :
               (
               <div>
-                <p>{FlowerList[layerIndex][flowerIndex][1]}</p>
-                <p>{FlowerList[layerIndex][flowerIndex][2]}</p>
+                {(layerIndex == 0 && flowerIndex == 0) ? (<p className={styles.flowerLabel}>Fillers</p>) : 
+                (null)}
+                {(layerIndex == 1 && flowerIndex == 0) ? (<p className={styles.flowerLabel}>Foliage</p>) : 
+                (null)}
+                {(layerIndex == 2 && flowerIndex == 0) ? (<p className={styles.flowerLabel}>Focal</p>) : 
+                (null)}
+                <div className={styles.tooltip}>
+                  <div className={styles.flowerThumbnail}></div>
+                  <span className={styles.tooltiptext}>{FlowerList[layerIndex][flowerIndex][1]}</span>
+                </div>
               </div>
-              )} 
+              )}
             </div>
               ))
-            ))}
+}</div>
+            ))
+            }
           </div>
         </div>) : 
         (null)
@@ -227,9 +330,9 @@ export default function Home() {
         (
           <div className={styles.step}>
             <div className={styles.information}>
-                <p>Step Three</p>
-                <h2>Write a note</h2>
-                <p> 
+                <p className={styles.stepBreadCrumb}>Step Three</p>
+                <h2 className={styles.stepHeading}>Write a note</h2>
+                <p className={styles.stepParagraph}> 
                   Optionally you can add a note to your gift
                 </p>
                 <div>
@@ -285,20 +388,23 @@ export default function Home() {
             Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.
           </p>
 
-          <text>http://GivingGiraffe.com/{URL}</text>
+          http://GivingGiraffe.com/{URL}
         </div>
         </div>) : null
           }
 
         <div className={styles.navigation}>
           {step !== 1 ? 
-          (<button onClick={ () => setStep(step - 1) }>Previous</button>) : 
-          (<button onClick={ () => setStep(step) }>Previous</button>)
+          (<button className={styles.Button} onClick={ () => setStep(step - 1) }>Previous</button>) : 
+          (<button className={styles.Button} onClick={ () => setStep(step) }>Previous</button>)
           }
           {step !== 3 ? 
-          (<button onClick={ () => setStep(step + 1) }>Next</button>) : 
-          (<button onClick={ () => URLGeneration() }>Generate Gift</button>)
+          (<button className={styles.Button} onClick={ () => setStep(step + 1) }>Next</button>) : 
+          (<button className={styles.ButtonComplete} onClick={ () => URLGeneration() }>Generate Gift</button>)
           }
+        </div>
+        </div>
+        <div className={styles.preview}>
         </div>
       </main>
     </div>
