@@ -1,7 +1,11 @@
 import React from 'react'
+import { BoxBufferGeometry } from 'three'
 
 export const Vase = () => {
   return (
-    <div>Vase three</div>
+    <mesh>
+      <boxBufferGeometry attach="geometry" />
+      <meshLambertMaterial attach="material" color="blue"/>
+    </mesh>
   )
 }

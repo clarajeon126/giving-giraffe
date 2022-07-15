@@ -1,6 +1,7 @@
 import { Canvas } from '@react-three/fiber';
 import Head from 'next/head'
 import Image from 'next/image'
+import { Vase } from '../../components/Vase';
 import styles from '../../styles/recipient.module.css'
 
 
@@ -23,10 +24,12 @@ export default function Recipient(props) {
       </Head>
 
       <main className={styles.main}>
-        <h1>
-          Clara's Portion {props.id}
+        <h1 id="title">
+          Giving Giraffe
         </h1>
-        <Canvas></Canvas>
+        <Canvas>
+          <Vase />
+        </Canvas>
       </main>
     </div>
   )
