@@ -189,7 +189,7 @@ export default function Home() {
           return (parseInt(inputo) + 1)
         })
       } else{
-        return (parseInt(input) + 1)
+        return ([parseInt(input) + 1, parseInt(input) + 1])
       }
     })
 
