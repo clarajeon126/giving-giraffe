@@ -1,8 +1,91 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
+import React, { useState, useEffect, useRef } from "react";
+
+export const VaseList = [
+  [1, "Red Vase", "Vase Subtext", "Vase Thumbnail"],
+  [2, "White Vase", "Vase Subtext", "Vase Thumbnail"],
+  [3, "Yellow Vase", "Vase Subtext", "Vase Thumbnail"]
+];
+
+export const FlowerList = [
+  [
+    [
+      1,
+      "Flower One",
+      "Flower Description",
+      "Flower Thumbnail"
+    ],
+    [
+      2,
+      "Flower Two",
+      "Flower Description",
+      "Flower Thumbnail"
+    ],
+    [
+      3,
+      "Flower Three",
+      "Flower Description",
+      "Flower Thumbnail"
+    ]
+  ],
+  [
+    [
+      1,
+      "Flower One",
+      "Flower Description",
+      "Flower Thumbnail"
+    ],
+    [
+      2,
+      "Flower Two",
+      "Flower Description",
+      "Flower Thumbnail"
+    ],
+    [
+      3,
+      "Flower Three",
+      "Flower Description",
+      "Flower Thumbnail"
+    ]
+  ],
+  [
+    [
+      1,
+      "Flower One",
+      "Flower Description",
+      "Flower Thumbnail"
+    ],
+    [
+      2,
+      "Flower Two",
+      "Flower Description",
+      "Flower Thumbnail"
+    ],
+    [
+      3,
+      "Flower Three",
+      "Flower Description",
+      "Flower Thumbnail"
+    ]
+  ]
+];
 
 export default function Home() {
+  const [vase, setVase] = useState([]);
+
+
+  const [fillers, setFillers] = useState([]);
+  const [foliage, setFoliage] = useState([]);
+  const [focal, setFocal] = useState([]);
+  const flowersSelected = [fillers, foliage, focal];
+
+  const [note, setNote] = useState([]);
+  const [noteChoice, setNoteChoice] = useState(true);
+
+  const [step, setStep] = useState(1);
+
   return (
     <div className={styles.container}>
       <Head>
@@ -13,8 +96,120 @@ export default function Home() {
 
       <main className={styles.main}>
         <h1>
-          Thomas's Portion
+          Giving Giraffe
         </h1>
+        <h3>
+          Personalized Digital Gifting
+        </h3>
+        {step == 1 ? (
+        <div className={styles.step}>
+          
+          <div className={styles.information}>
+            <p>Step One</p>
+            <h2>Select a vase</h2>
+            <p> 
+              The vase is an important often overlooked component of the
+              flowering arrangement process. Be sure to choose wisely for
+              the wrong vase may convey the wrong message. 
+            </p>
+
+            {VaseList && VaseList.map((vaseArray, i) => (
+            <div onClick={() => {
+              setVase(vaseArray[0])
+              console.log(vase)
+              }}>
+              <p>{vaseArray[1]}</p>
+              <p>{vaseArray[2]}</p>
+            </div>
+            ))}
+
+          </div>
+        </div>) : 
+        (null)
+        }
+
+        {step == 2 ? (
+        <div className={styles.step}>
+          
+          <div className={styles.information}>
+            <p>Step Two</p>
+            
+            <h2>Select Flowers</h2>
+            <p> 
+              Select the flowers for your gift
+            </p>
+            {FlowerList && FlowerList.map((layerOfFlowers, layerIndex) => (
+              layerOfFlowers && layerOfFlowers.map((flower, flowerIndex) => (
+
+              
+            <div onClick={() => {
+              //setFlowers(flowers.splice(layerIndex, 1, flowers[layerIndex].push(FlowerList[layerIndex][flowerIndex][0])))
+              if (layerIndex == 0) {
+                setFillers(oldArray => [...oldArray, flowerIndex])
+                console.log(flowersSelected)
+              } else if (layerIndex == 1) {
+                setFoliage(oldArray => [...oldArray, flowerIndex])
+                console.log(flowersSelected)
+              } else if (layerIndex == 2) {
+                setFocal(oldArray => [...oldArray, flowerIndex])
+                console.log(flowersSelected)
+              }
+              }}>
+              <p>{FlowerList[layerIndex][flowerIndex][1]}</p>
+              <p>{FlowerList[layerIndex][flowerIndex][2]}</p>
+            </div>
+              ))
+            ))}
+          </div>
+        </div>) : 
+        (null)
+        }
+
+        {step == 3 ? 
+        (
+          <div className={styles.step}>
+            <div className={styles.information}>
+                <p>Step Three</p>
+                <h2>Write a note</h2>
+                <p> 
+                  Optionally you can add a note to your gift
+                </p>
+                <div>
+                  <input type="checkbox" 
+                  defaultChecked={noteChoice}
+                  onChange={() => setNoteChoice(!noteChoice)}
+                  ></input>
+                  <label>I would like to include a note</label>
+                </div>
+                
+                {noteChoice ? (
+                  <div>
+                  <div>
+                  <label for="fname">Their Name:</label>
+                  <input type="text" id="fname" name="fname"></input>
+                  </div>
+                  <div>
+                  <textarea></textarea>
+                  </div>
+                  <div>
+                  <label for="fname">Your Name</label>
+                  <input type="text" id="fname" name="fname"></input>
+                  </div>
+                  </div>
+                ) : (
+                  null
+                  )} 
+               
+              </div>
+            </div>
+        ) : (null)}
+        <div className={styles.navigation}>
+          {step !== 1 ? 
+          (<button onClick={ () => setStep(step - 1) }>Previous</button>) : 
+          (<button onClick={ () => setStep(step) }>Previous</button>)
+          }
+          <button onClick={ () => setStep(step + 1) }> Next </button>
+        </div>
       </main>
     </div>
   )
