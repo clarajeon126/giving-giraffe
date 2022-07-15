@@ -81,10 +81,28 @@ export default function Home() {
   const [focal, setFocal] = useState([]);
   const flowersSelected = [fillers, foliage, focal];
 
-  const [note, setNote] = useState([]);
+  const [noteGifter, setNoteGifter] = useState("");
+
+  const [noteContent, setNoteContent] = useState("");
+
+  const [noteRecipient, setNoteRecipient] = useState("");
+
   const [noteChoice, setNoteChoice] = useState(true);
+  
+  const note = [noteContent, noteGifter];
+
 
   const [step, setStep] = useState(1);
+  const [URL, setURL] = useState();
+
+  const URLGeneration = () => {
+    const Content = [vase, flowersSelected.join('-'), note.join('-')]
+    const ContentSpaced = Content.join('_')
+    console.log(ContentSpaced)
+    setStep(4)
+    setURL(ContentSpaced)
+    return ContentSpaced
+  }
 
   return (
     <div className={styles.container}>
@@ -114,12 +132,14 @@ export default function Home() {
             </p>
 
             {VaseList && VaseList.map((vaseArray, i) => (
+            
             <div onClick={() => {
               setVase(vaseArray[0])
               console.log(vase)
               }}>
-              <p>{vaseArray[1]}</p>
-              <p>{vaseArray[2]}</p>
+              {vase == i + 1 ? (
+              <strong>{vaseArray[1]}</strong> ) : <p>{vaseArray[1]}</p>}
+              <p>{vaseArray[2]}</p> 
             </div>
             ))}
 
@@ -145,18 +165,32 @@ export default function Home() {
             <div onClick={() => {
               //setFlowers(flowers.splice(layerIndex, 1, flowers[layerIndex].push(FlowerList[layerIndex][flowerIndex][0])))
               if (layerIndex == 0) {
-                setFillers(oldArray => [...oldArray, flowerIndex])
+                //setFillers(oldArray => [...oldArray, flowerIndex])
+                setFillers(flowerIndex)
                 console.log(flowersSelected)
               } else if (layerIndex == 1) {
-                setFoliage(oldArray => [...oldArray, flowerIndex])
+                //setFoliage(oldArray => [...oldArray, flowerIndex])
+                setFoliage(flowerIndex)
                 console.log(flowersSelected)
               } else if (layerIndex == 2) {
-                setFocal(oldArray => [...oldArray, flowerIndex])
+                setFocal(flowerIndex)
+                //setFocal(oldArray => [...oldArray, flowerIndex])
                 console.log(flowersSelected)
               }
               }}>
-              <p>{FlowerList[layerIndex][flowerIndex][1]}</p>
-              <p>{FlowerList[layerIndex][flowerIndex][2]}</p>
+                {(layerIndex == 0 && fillers == (flowerIndex)) || (layerIndex == 1 && foliage == flowerIndex) || (layerIndex == 2 && focal == flowerIndex) ? 
+              (
+              <div>
+                <strong>{FlowerList[layerIndex][flowerIndex][1]}</strong>
+                <p>{FlowerList[layerIndex][flowerIndex][2]}</p>
+              </div>
+              ) :
+              (
+              <div>
+                <p>{FlowerList[layerIndex][flowerIndex][1]}</p>
+                <p>{FlowerList[layerIndex][flowerIndex][2]}</p>
+              </div>
+              )} 
             </div>
               ))
             ))}
@@ -186,14 +220,24 @@ export default function Home() {
                   <div>
                   <div>
                   <label for="fname">Their Name:</label>
-                  <input type="text" id="fname" name="fname"></input>
+                  <input onChange={(e) => {setNoteRecipient(btoa(e.target.value))
+                  console.log(atob(noteRecipient))}}
+                  type="text" id="fname" name="fname"></input>
                   </div>
                   <div>
-                  <textarea></textarea>
+                  <textarea onChange={(e) => {setNoteContent(btoa(e.target.value))
+                console.log(atob(noteContent) ) 
+                }}
+                  placeholder="Type your message here..."
+                  >
+
+                  </textarea>
                   </div>
                   <div>
                   <label for="fname">Your Name: </label>
-                  <input type="text" id="fname" name="fname"></input>
+                  <input onChange={(e) => {setNoteGifter(btoa(e.target.value))
+                  console.log(atob(noteGifter))}}
+                  type="text" id="fname" name="fname"></input>
                   </div>
                   </div>
                 ) : (
@@ -203,6 +247,25 @@ export default function Home() {
               </div>
             </div>
         ) : (null)}
+
+        
+        {step == 4 ? 
+        (<div className={styles.step}>
+          
+        <div className={styles.information}>
+          
+          
+          <h2>Thank you for gifting with Giving Giraffe</h2>
+
+          <p> 
+            Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.
+          </p>
+
+          <text>http://GivingGiraffe.com/{URL}</text>
+        </div>
+        </div>) : null
+          }
+
         <div className={styles.navigation}>
           {step !== 1 ? 
           (<button onClick={ () => setStep(step - 1) }>Previous</button>) : 
@@ -210,7 +273,7 @@ export default function Home() {
           }
           {step !== 3 ? 
           (<button onClick={ () => setStep(step + 1) }>Next</button>) : 
-          (<button onClick={ () => setStep(step + 1) }>Generate Gift</button>)
+          (<button onClick={ () => URLGeneration() }>Generate Gift</button>)
           }
         </div>
       </main>
