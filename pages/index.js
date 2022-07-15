@@ -192,7 +192,7 @@ export default function Home() {
                   <textarea></textarea>
                   </div>
                   <div>
-                  <label for="fname">Your Name</label>
+                  <label for="fname">Your Name: </label>
                   <input type="text" id="fname" name="fname"></input>
                   </div>
                   </div>
