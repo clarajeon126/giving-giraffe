@@ -185,9 +185,9 @@ export default function Home() {
 
     const flowersUnmapped = Decoding_URL[1].split("-").map(input => {
       if(input.includes(",")) {
-        return input.split(",")
+        return (parseInt(input) + 1).split(",")
       } else{
-        return input
+        return (parseInt(input) + 1)
       }
     })
 
