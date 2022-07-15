@@ -14,3 +14,13 @@ a {
 * {
   box-sizing: border-box;
 }
+
+@font-face {
+  font-family: 'GT-Maru';
+  src: url('../assets/GT-Maru/GT-Maru-Light-Trial.otf');
+  src: url('../assets/GT-Maru/GT-Maru-Medium-Trial.otf');
+  src: url('../assets/GT-Maru/GT-Maru-Bold-Trial.otf');
+  src: url('../assets/GT-Maru/GT-Maru-Regular-Trial.otf');
+  font-weight: 400;
+  font-style: normal;
+}
