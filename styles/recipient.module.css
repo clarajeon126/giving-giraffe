@@ -1,13 +1,25 @@
-.main {
+.container {
+    overflow: hidden;
     display: flex;
     flex-direction: column;
     justify-content: center;
     width: 100vw;
     height: 100vh;
 }
+.main {
+
+}
 
 .title {
     display: block;
+    height: 8vh;
+    text-align: center;
+    font-family: 'GT-Maru';
+}
+
+.botText {
+    display: block;
+    height: 4vh;
     text-align: center;
     font-family: 'GT-Maru';
 }
