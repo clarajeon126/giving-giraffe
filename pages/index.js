@@ -208,7 +208,10 @@ export default function Home() {
           (<button onClick={ () => setStep(step - 1) }>Previous</button>) : 
           (<button onClick={ () => setStep(step) }>Previous</button>)
           }
-          <button onClick={ () => setStep(step + 1) }> Next </button>
+          {step !== 3 ? 
+          (<button onClick={ () => setStep(step + 1) }>Next</button>) : 
+          (<button onClick={ () => setStep(step + 1) }>Generate Gift</button>)
+          }
         </div>
       </main>
     </div>
