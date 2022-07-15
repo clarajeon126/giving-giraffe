@@ -185,7 +185,9 @@ export default function Home() {
 
     const flowersUnmapped = Decoding_URL[1].split("-").map(input => {
       if(input.includes(",")) {
-        return (parseInt(input) + 1).split(",")
+        return ((input)).split(",").map(inputo => {
+          return (parseInt(inputo) + 1)
+        })
       } else{
         return (parseInt(input) + 1)
       }
@@ -382,13 +384,14 @@ export default function Home() {
         <div className={styles.information}>
           
           
-          <h2>Thank you for gifting with Giving Giraffe</h2>
+          <h2 className={styles.stepHeading}>Thank you for gifting with Giving Giraffe</h2>
 
-          <p> 
+          <p className={styles.stepParagraph}> 
             Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.
           </p>
-
+          <div>
           http://GivingGiraffe.com/{URL}
+          </div>
         </div>
         </div>) : null
           }
@@ -396,7 +399,7 @@ export default function Home() {
         <div className={styles.navigation}>
           {step !== 1 ? 
           (<button className={styles.Button} onClick={ () => setStep(step - 1) }>Previous</button>) : 
-          (<button className={styles.Button} onClick={ () => setStep(step) }>Previous</button>)
+          (<button className={styles.ButtonOff} onClick={ () => setStep(step) }>Previous</button>)
           }
           {step !== 3 ? 
           (<button className={styles.Button} onClick={ () => setStep(step + 1) }>Next</button>) : 
