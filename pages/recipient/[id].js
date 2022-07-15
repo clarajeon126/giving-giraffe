@@ -1,6 +1,9 @@
 import { Canvas } from '@react-three/fiber';
 import Head from 'next/head'
 import Image from 'next/image'
+import { useEffect, useState } from 'react';
+import { Scene } from 'three';
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { Vase } from '../../components/Vase';
 import styles from '../../styles/recipient.module.css'
 
@@ -14,7 +17,17 @@ return {
 }
 
 }
+
 export default function Recipient(props) {
+  const [scene, setScene] = useState(new Scene("vase"));
+
+  useEffect(() => {
+    const gltfloader = new GLTFLoader()
+    gltfloader.load('../../assets/models/vase1.gltf', (gltfScene) => {
+      scene.scene.add(gltfScene.scene);
+    })
+  }, [])
+
   return (
     <div className={styles.container}>
       <Head>
@@ -24,7 +37,7 @@ export default function Recipient(props) {
       </Head>
 
       <main className={styles.main}>
-        <h1 id="title">
+        <h1 className={styles.title}>
           Giving Giraffe
         </h1>
         <Canvas>
