@@ -34,6 +34,22 @@ function cC(xVal, yVal) {
   return {x: xVal, y: yVal};
 }
 
+function foliageCreator(num){
+  if(num == 0){
+    
+  }
+  else if(num == 1){
+    
+  }
+  else if(num == 2){
+
+  }
+  else if(num == 3){
+
+  }
+}
+
+
 export const Arrangement = (props) => {
   const [chosenFlowers, setChosenFlowers] = useState(props.chosenFlowerArr)
   const [vaseType, setVaseType] = useState(props.vaseNum)
@@ -50,9 +66,9 @@ export const Arrangement = (props) => {
       {/* <spotLight intensity={0.5} angle={0.1} penumbra={1} position={[10, 15, 10]} castShadow /> */}
       <Suspense fallback={null}>
         <Vase1 />
-        {/* {foliageCoords.map((coord) => (
+        {foliageCoords.map((coord) => (
           <div className="user">{user}</div>
-        ))} */}
+        ))}
         <Sunflower position={[0,0,0]} scale={[0.1,0.1,0.1]} rotation-x={Math.PI / 9} />
         <Sunflower scale={[0.1,0.1,0.1]} rotation-x={0} />
       </Suspense>
