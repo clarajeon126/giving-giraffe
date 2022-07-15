@@ -89,7 +89,7 @@ export default function Home() {
 
   const [noteChoice, setNoteChoice] = useState(true);
   
-  const note = [noteContent, noteGifter];
+  const note = [noteContent, noteRecipient, noteGifter];
 
 
   const [step, setStep] = useState(1);
@@ -101,7 +101,25 @@ export default function Home() {
     console.log(ContentSpaced)
     setStep(4)
     setURL(ContentSpaced)
+    URLDecoding(ContentSpaced)
     return ContentSpaced
+  }
+  const URLDecoding = (URL) => {
+    const Decoding_URL = URL.split('_')
+    //const vase_inputted = JSON.parse(parseInt(Decoding_URL[0]))
+    const vase_inputted = parseInt(Decoding_URL[0])
+
+    const flowersUnmapped = Decoding_URL[1].split("-").map(input => {
+      if(input.includes(",")) {
+        return input.split(",")
+      } else{
+        return input
+      }
+    })
+
+    const messageEncoded = Decoding_URL[2].split('-').map(input => atob(input))
+    const CompleteDecode = [vase_inputted, flowersUnmapped, messageEncoded]
+    console.log(CompleteDecode)
   }
 
   return (
@@ -165,10 +183,16 @@ export default function Home() {
             <div onClick={() => {
               //setFlowers(flowers.splice(layerIndex, 1, flowers[layerIndex].push(FlowerList[layerIndex][flowerIndex][0])))
               if (layerIndex == 0) {
-                //setFillers(oldArray => [...oldArray, flowerIndex])
-                setFillers(flowerIndex)
+                if (fillers.includes(flowerIndex)) {
+                  setFillers(fillers.filter(indexOfFlower => indexOfFlower != flowerIndex))
+                } else {
+                  setFillers(oldArray => [...oldArray, flowerIndex])
+                 }
+
+                //setFillers(flowerIndex)
                 console.log(flowersSelected)
               } else if (layerIndex == 1) {
+                
                 //setFoliage(oldArray => [...oldArray, flowerIndex])
                 setFoliage(flowerIndex)
                 console.log(flowersSelected)
@@ -178,7 +202,7 @@ export default function Home() {
                 console.log(flowersSelected)
               }
               }}>
-                {(layerIndex == 0 && fillers == (flowerIndex)) || (layerIndex == 1 && foliage == flowerIndex) || (layerIndex == 2 && focal == flowerIndex) ? 
+                {(layerIndex == 0 && fillers.includes(flowerIndex)) || (layerIndex == 1 && foliage == flowerIndex) || (layerIndex == 2 && focal == flowerIndex) ? 
               (
               <div>
                 <strong>{FlowerList[layerIndex][flowerIndex][1]}</strong>
