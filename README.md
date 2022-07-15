@@ -1,1 +1,1 @@
-# givinggiraffe
+# Giving Giraffe
