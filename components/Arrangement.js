@@ -133,7 +133,7 @@ export const Arrangement = (props) => {
     //silver dollar
     else if(num == 1){
       return (
-        <Silvers position={[0,0,0]} rotation-z={rotz} rotation-y={roty}  scale={[1,2,1]}/>
+        <Silvers position={[0,0,0]} rotation-z={rotz} rotation-y={roty}  scale={[0.8,2.2,0.8]}/>
       )
     }
     //dusty miller

@@ -2,6 +2,7 @@ import Head from 'next/head'
 import { useEffect, useState } from 'react';
 import { Arrangement } from '../../components/Arrangement';
 import { Card } from '../../components/Card';
+import Confetti from 'react-dom-confetti';
 
 import styles from '../../styles/recipient.module.css'
 import Image from 'next/image'
@@ -86,13 +87,36 @@ export default function Recipient(props) {
   const [noteText, setNoteText] = useState(entireGift[2][0])
   const [vaseType, setVaseType] = useState(entireGift[0])
   const [gifterName, setGifterName] = useState(entireGift[2][2])  
-
+  const [giftClicked, setGiftClicked] = useState(false);
+  const [confOn, setConfOn] = useState(false);
   const [cardOpen, setCardOpen] = useState(false);
 
   useEffect(() => {
     console.log("useeffect was ran")
     // decode props
   }, [])
+
+  function boxClickedFunc(){
+    console.log("click!")
+
+    setGiftClicked(true)
+    setTimeout(() => {
+      setConfOn(true)
+    }, 500);
+  }
+  const config = {
+    angle: "90",
+    spread: "700",
+    startVelocity: 60,
+    elementCount: "300",
+    dragFriction: 0.12,
+    duration: "4000",
+    stagger: "2",
+    width: "11px",
+    height: "11px",
+    perspective: "650px",
+    colors: ["#a864fd", "#29cdff", "#78ff44", "#ff718d", "#fdff6a"]
+  };
 
   return (
     
@@ -112,14 +136,16 @@ export default function Recipient(props) {
               <h3 className={styles.botText}>
                 specially made for {recipientName}
               </h3>
-
-              <Box className={styles.box} />
-              <div  className={styles.argmt}>
+              <div className={!giftClicked ? styles.box : styles.noDisplay}>
+                <Box clickFunc={boxClickedFunc} />
+              </div>
+              <Confetti className={styles.confetti} active={ confOn } config={ config }/>
+              <div className={giftClicked ? styles.argmt : styles.noDisplay}>
                 <Arrangement chosenFlowerArr={chosenFlowers} vaseNum={vaseType}/>
 
               </div >
-              <div className={styles.letterImg} style={{'z-index': 1}} >
-                <img onClick={() => {setCardOpen(true)}}  src={lettercover}/>
+              <div  className={giftClicked ? styles.letterImg : styles.noDisplay} >
+                <Image onClick={() => {setCardOpen(true)}}  src={lettercover}/>
               </div>
         </div>)
         : 
@@ -128,7 +154,7 @@ export default function Recipient(props) {
             <h1 className={styles.title}>
             Giving Giraffe
             </h1>
-            <p className={styles.cardClose} onClick={() => {setCardOpen(false)}}>Close Card</p>
+            <button className={styles.Button} onClick={() => {setCardOpen(false)}}>Close Card</button>
             <Card Gifter={gifterName} Recipient={recipientName} Content={noteText} Preview={false}></Card>
             </div>
         )}

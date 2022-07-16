@@ -3,14 +3,16 @@ import boxAnim from "../public/boxanim.gif"
 import Image from 'next/image'
 import styles from '../styles/recipient.module.css'
 
+
 export const Box = (props) => {
-  const [giftClicked, setGiftClicked] = useState(false);
   
 
+  
   return (
-    <div className={!giftClicked ? styles.boxMain : styles.noDisplay}>
+    <div className={styles.boxMain}>
         <div className={styles.boxAnim} >
-            <Image onClick={() => setGiftClicked(true)} src={boxAnim} ></Image>
+            <Image onClick={props.clickFunc} src={boxAnim} />
+
         </div>
         <h2>click to open !</h2>
     </div>
