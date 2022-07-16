@@ -209,7 +209,9 @@ export default function Home() {
 
       <main className={styles.main}>
         <div>
-        <div className={styles.branding}>
+        <div className={styles.branding} onClick={() => { 
+          setStep(1)
+        }}>
         <h1 className={styles.title}>
           Giving Giraffe
         </h1>
@@ -388,7 +390,7 @@ export default function Home() {
           <h2 className={styles.stepHeading}>Thank you for gifting with Giving Giraffe</h2>
 
           <p className={styles.stepParagraph}> 
-            Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.
+            We're delighted that you took the time to create a gift for someone using our tool. We hope your recipient appreciates your efforts as much as we do. 
           </p>
           <div className={styles.linkHolder} onClick={ () => {
             navigator.clipboard.writeText("http://GivingGiraffe.com/" + URL)

@@ -13,6 +13,9 @@
   margin-bottom: 4px;
 }
 
+.branding {
+  cursor: pointer;
+}
 .branding .subtitle {
   font-style: normal;
   font-weight: 400;
@@ -256,6 +259,7 @@ color: #392E26;
 }
 
 .flowerThumbnail {
+  cursor: pointer;
   background-color: #7A4323;
   height: 68px;
   width: 68px;
