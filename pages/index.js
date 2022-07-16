@@ -2,144 +2,177 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import React, { useState, useEffect, useRef } from "react";
+import OrangeVase from '../assets/FlowerThumbnails/Vases/OrangeVase.png'
+import WhiteVase from '../assets/FlowerThumbnails/Vases/WhiteVase.png'
+import YellowVase from '../assets/FlowerThumbnails/Vases/YellowVase.png'
+
+import DarkPurpleAnemone from '../assets/FlowerThumbnails/Anemone/darkpurple.png'
+import LightPinkAnemone from '../assets/FlowerThumbnails/Anemone/lightpink.png'
+import OrangeAnemone from '../assets/FlowerThumbnails/Anemone/orange.png'
+import WhiteAnemone from '../assets/FlowerThumbnails/Anemone/white.png'
+
+import LightPinkCosmos from '../assets/FlowerThumbnails/Cosmos/lightpink.png'
+import LightPurpleCosmos from '../assets/FlowerThumbnails/Cosmos/lightpurple.png'
+import WhiteYellowCosmos from '../assets/FlowerThumbnails/Cosmos/whiteyellow.png'
+
+import Gyps from '../assets/FlowerThumbnails/Gyps/Gyps.png'
+
+import Sunflower from '../assets/FlowerThumbnails/Sunflower/Sunflower.png'
+
+import DustyMiller from '../assets/FlowerThumbnails/DustyMiller/DustyMiller.png'
+
+import LeatherLeafFern from '../assets/FlowerThumbnails/LeatherLeafFern/leatherleaffern.png'
+
+import BrightPinkPeony from '../assets/FlowerThumbnails/Peony/BrightPink.png'
+import BrownPeony from '../assets/FlowerThumbnails/Peony/BrownPink.png'
+import CreamPeony from '../assets/FlowerThumbnails/Peony/Cream.png'
+import LightBluePeony from '../assets/FlowerThumbnails/Peony/LightBlue.png'
+import LinkPinkPeony from '../assets/FlowerThumbnails/Peony/LightPink.png'
+
+import SilverDollarEucalyptus from '../assets/FlowerThumbnails/SilverDollarEucalyptus/Straight.png'
+
+import CreamSprayRose from '../assets/FlowerThumbnails/SprayRose/Cream.png'
+import LightPeachSprayRose from '../assets/FlowerThumbnails/SprayRose/LightPeach.png'
+import LightPinkSprayRose from '../assets/FlowerThumbnails/SprayRose/LightPink.png'
+import LightPurpleSprayRose from '../assets/FlowerThumbnails/SprayRose/LightPurple.png'
 
 export const VaseList = [
-  [1, "Red Vase", "Vase Subtext", "Vase Thumbnail"],
-  [2, "White Vase", "Vase Subtext", "Vase Thumbnail"],
-  [3, "Yellow Vase", "Vase Subtext", "Vase Thumbnail"]
+  [1, "Red Vase", "Some call it early", OrangeVase],
+  [2, "White Vase", "Vase Subtext", WhiteVase],
+  [3, "Yellow Vase", "Vase Subtext", YellowVase]
   ];
 
 export const FlowerList = [
   [
     [
       1,
-      "Flower One",
+      "Cream Spray Rose",
       "Flower Description",
-      "Flower Thumbnail"
+      CreamSprayRose
     ],
     [
       2,
-      "Flower Two",
+      "Light Peach Spray Rose",
       "Flower Description",
-      "Flower Thumbnail"
+      LightPeachSprayRose
     ],
     [
       3,
-      "Flower Three",
+      "Light Purple Spray Rose",
       "Flower Description",
-      "Flower Thumbnail"
+      LightPurpleSprayRose
     ],
     [
       4,
-      "Flower Four",
+      "Light Pink Spray Rose",
       "Flower Description",
-      "Flower Thumbnail"
+      LightPinkSprayRose
     ],
     [
       5,
-      "Flower Five",
+      "Cream Cosmos",
       "Flower Description",
-      "Flower Thumbnail"
+      WhiteYellowCosmos
     ],
     [
       6,
-      "Flower Six",
+      "Light Pink Cosmos",
       "Flower Description",
-      "Flower Thumbnail"
+      LightPinkCosmos
     ],
     [
       7,
-      "Flower Seven",
+      "Light Purple Cosmos",
       "Flower Description",
-      "Flower Thumbnail"
+      LightPurpleCosmos
     ],
     [
       8,
-      "Flower Eight",
+      "Gyps",
       "Flower Description",
-      "Flower Thumbnail"
+      Gyps
     ]
   ],
   [
     [
       1,
-      "Flower One",
+      "Silver Dollar Eucalyptus",
       "Flower Description",
-      "Flower Thumbnail"
+      SilverDollarEucalyptus
     ],
     [
       2,
-      "Flower Two",
+      "Dusty Miller",
       "Flower Description",
-      "Flower Thumbnail"
+      DustyMiller
     ],
     [
       3,
-      "Flower Three",
+      "Leatherleaf Fern",
       "Flower Description",
-      "Flower Thumbnail"
+      LeatherLeafFern
     ]
   ],
   [
     [
       1,
-      "Flower One",
+      "White Anemone",
       "Flower Description",
-      "Flower Thumbnail"
+      WhiteAnemone
     ],
     [
       2,
-      "Flower Two",
+      "Orange Anemone",
       "Flower Description",
-      "Flower Thumbnail"
+      OrangeAnemone
     ],
     [
       3,
-      "Flower Three",
+      "Dark Purple Anemone",
       "Flower Description",
-      "Flower Thumbnail"
+      DarkPurpleAnemone
     ],
     [
       4,
-      "Flower Four",
+      "Light Pink Anemone",
       "Flower Description",
-      "Flower Thumbnail"
+      LightPinkAnemone
     ],
     [
       5,
-      "Flower Five",
+      "Light Blue Peony",
       "Flower Description",
-      "Flower Thumbnail"
+      LightBluePeony
     ],
     [
       6,
-      "Flower Six",
+      "Light Pink Peony",
       "Flower Description",
-      "Flower Thumbnail"
+      LinkPinkPeony
     ],
     [
       7,
-      "Flower Seven",
+      "Bright Pink Peony",
       "Flower Description",
-      "Flower Thumbnail"
+      BrightPinkPeony
     ],
     [
       8,
-      "Flower Eight",
+      "Cream Peony",
       "Flower Description",
-      "Flower Thumbnail"
+      CreamPeony
     ],
     [
       9,
-      "Flower Nine",
+      "Red Cream Peony",
       "Flower Description",
-      "Flower Thumbnail"
+      BrownPeony
     ],
     [
       10,
-      "Flower Ten",
+      "Sunflower",
       "Flower Description",
-      "Flower Thumbnail"
+      Sunflower
     ]
   ]
 ];
@@ -237,8 +270,13 @@ export default function Home() {
               console.log(vase)
               }}>
               {vase !== i + 1 ? (
-              <div className={styles.vaseItem}> <div className={styles.vaseImage}></div><p className={styles.vaseTitle}>{vaseArray[1]}</p> <p className={styles.vaseSubtext}>{vaseArray[2]}</p></div> ) : 
-              <div className={styles.vaseItem}> <div className={styles.vaseImage}><p className={styles.selectedLabel}>Selected</p></div><p className={styles.vaseTitle}>{vaseArray[1]}</p> <p className={styles.vaseSubtext}>{vaseArray[2]}</p></div>}
+              <div className={styles.vaseItem}> <Image src={vaseArray[3]} className={styles.vaseImage}></Image><p className={styles.vaseTitle}>{vaseArray[1]}</p> 
+              {/* <p className={styles.vaseSubtext}> {vaseArray[2]}</p> */}
+              </div> ) : 
+              <div className={styles.vaseItem}> <Image src={vaseArray[3]} className={styles.vaseImageSelected}></Image><p className={styles.vaseTitle}>{vaseArray[1]}</p> 
+              
+              {/* <p className={styles.vaseSubtext}>{vaseArray[2]}</p> */}
+              </div>}
                
             </div>
             ))}
@@ -301,9 +339,11 @@ export default function Home() {
                 {(layerIndex == 2 && flowerIndex == 0) ? (<p className={styles.flowerLabel}>Focal</p>) : 
                 (null)}
                 
-                <div className={styles.tooltip}>
-                <div className={styles.flowerThumbnailSelected}></div>
-                  <span className={styles.tooltiptext}>{FlowerList[layerIndex][flowerIndex][1]}</span>
+                <div className={styles.tooltipSelected}>
+                <div className={styles.flowerThumbnailSelected}>
+                  <Image src={flower[3]}></Image>
+                </div>
+                  <span className={styles.tooltiptextSelected}>{FlowerList[layerIndex][flowerIndex][1]}</span>
                 </div>
               </div>
               ) :
@@ -316,7 +356,9 @@ export default function Home() {
                 {(layerIndex == 2 && flowerIndex == 0) ? (<p className={styles.flowerLabel}>Focal</p>) : 
                 (null)}
                 <div className={styles.tooltip}>
-                  <div className={styles.flowerThumbnail}></div>
+                  <div className={styles.flowerThumbnail}>
+                  <Image src={flower[3]}></Image>
+                  </div>
                   <span className={styles.tooltiptext}>{FlowerList[layerIndex][flowerIndex][1]}</span>
                 </div>
               </div>
