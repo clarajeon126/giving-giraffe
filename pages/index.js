@@ -5,6 +5,8 @@ import React, { useState, useEffect, useRef } from "react";
 import OrangeVase from '../assets/FlowerThumbnails/Vases/OrangeVase.png'
 import WhiteVase from '../assets/FlowerThumbnails/Vases/WhiteVase.png'
 import YellowVase from '../assets/FlowerThumbnails/Vases/YellowVase.png'
+import { Arrangement } from '../components/Arrangement';
+import { Card } from '../components/Card';
 
 import DarkPurpleAnemone from '../assets/FlowerThumbnails/Anemone/darkpurple.png'
 import LightPinkAnemone from '../assets/FlowerThumbnails/Anemone/lightpink.png'
@@ -463,7 +465,11 @@ export default function Home() {
         </div>) : null}
         </div>
         <div className={styles.preview}>
-        </div>
+        {step !== 3 ? 
+        (
+          <Arrangement vaseNum={vase} chosenFlowerArr={flowersSelected}/>
+        ) : (<Card Gifter={noteGifter} Recipient={noteRecipient} Content={noteContent} Preview={"true"}></Card>)}
+          </div>
       </main>
     </div>
   )
