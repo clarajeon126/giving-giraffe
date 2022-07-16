@@ -7,7 +7,7 @@ import { useGLTF } from '@react-three/drei'
 
 export default function Peonylpink({ ...props }) {
   const group = useRef()
-  const { nodes, materials } = useGLTF('/focal/peony/peonylpinkcp.gltf')
+  const { nodes, materials } = useGLTF('/focal/peony/peonylpinkcp.glb')
   return (
     <group ref={group} {...props} dispose={null}>
       <group position={[0.03, 1.82, 0.01]} rotation={[0.04, 0.01, 0.24]} scale={[0.07, 0.07, 0.08]}>

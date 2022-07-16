@@ -121,7 +121,7 @@ export const Arrangement = (props) => {
   
 
   function foliageCreator(coord){
-    let num = chosenFlowers[3]
+    let num = chosenFlowers[0]
   
     let roty = rotationYValue(coord);
   
@@ -151,10 +151,10 @@ export const Arrangement = (props) => {
   }
   
   function fillerCreator(isFiller1, coord){
-    let num = chosenFlowers[0]
+    let num = chosenFlowers[1]
   
     if(!isFiller1){
-      num = chosenFlowers[1]
+      num = chosenFlowers[2]
     }
     console.log(num)
     let roty = rotationYValue(coord);
@@ -195,7 +195,7 @@ export const Arrangement = (props) => {
   }
   
   function focalCreator(coord){
-    let num = chosenFlowers[2]
+    let num = chosenFlowers[3]
   
     let roty = rotationYValue(coord);
     
@@ -276,13 +276,7 @@ export const Arrangement = (props) => {
   useEffect(() => {
     console.log("flowers loaded up")
     setChosenFlowers(props.chosenFlowerArr)
-    // foliage = chosenFlowers[3]
-    // focal = chosenFlowers[2]
-    // filler1 = chosenFlowers[1]
-    // filler1 = chosenFlowers[0]
-    // vaseNum = vaseType
-    // setVaseType(vaseNum)
-    //decode the id
+    setVaseType(props.vaseNum)
   }, [props.chosenFlowerArr])
 
 

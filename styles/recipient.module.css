@@ -61,10 +61,10 @@
 }
 
 .letterImg {
-    position: fixed;
-    position: absolute;
-    left: 20vw;
-    top: 20vh;
+    position:absolute;
+    width: 10vw;
+    left: 25vw;
+    top: 40vh;
 }
 
 
@@ -154,7 +154,7 @@ margin-left: 32px;
 }
 
 .argmt {
-    position:absolute;
+    /* position:absolute; */
     width: 100vw;
     height: 100vh;
 }

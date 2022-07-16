@@ -81,7 +81,7 @@ export default function Recipient(props) {
   let entireGift = URLDecoding(props.id);
   console.log(entireGift)
   
-  const [chosenFlowers, setChosenFlowers] = useState([entireGift[1][0][0], entireGift[1][0][1], entireGift[1][1][0], entireGift[1][2][0]])
+  const [chosenFlowers, setChosenFlowers] = useState([entireGift[1][0][0], entireGift[1][1][0], entireGift[1][1][1], entireGift[1][2][0]])
   const [recipientName, setRecipientName] = useState(entireGift[2][1])
   const [noteText, setNoteText] = useState(entireGift[2][0])
   const [vaseType, setVaseType] = useState(entireGift[0])
@@ -118,8 +118,8 @@ export default function Recipient(props) {
                 <Arrangement chosenFlowerArr={chosenFlowers} vaseNum={vaseType}/>
 
               </div >
-              <div className={styles.letterImg}>
-                <Image onClick={() => {setCardOpen(true)}}  src={lettercover}/>
+              <div className={styles.letterImg} style={{'z-index': 1}} >
+                <img onClick={() => {setCardOpen(true)}}  src={lettercover}/>
               </div>
         </div>)
         : 
