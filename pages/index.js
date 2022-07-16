@@ -527,8 +527,6 @@ export default function Home() {
         ) : (<Card Gifter={noteGifter} Recipient={noteRecipient} Content={noteContent} Preview={"true"}></Card>)}
           </div>
       </main>
-            )
-          }
     </div>
   )
 }
