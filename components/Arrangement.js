@@ -256,11 +256,11 @@ export const Arrangement = (props) => {
       )
     }
     else if(vaseNum == 2){
-      return(<Vase2 position={[0,-14,0]} scale={[10,10,10]}/>
+      return(<Vase2 position={[0,-14,0]} rotation-y={Math.PI / 2}  scale={[10,10,10]}/>
       )
     }
     else if(vaseNum == 3){
-      return (<Vase3 position={[0,-14,0]} rotation-x={0} scale={[10,10,10]}/>
+      return (<Vase3 position={[0,-14,0]} scale={[10,10,10]}/>
       )
     }
   }
