@@ -18,4 +18,3 @@ export default function Rosepurple({ ...props }) {
   )
 }
 
-useGLTF.preload('/filler/rose/rosepurplecp.glb')

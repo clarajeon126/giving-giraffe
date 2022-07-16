@@ -22,4 +22,3 @@ export default function Dusty({ ...props }) {
   )
 }
 
-useGLTF.preload('/foliage/dustycp.glb')

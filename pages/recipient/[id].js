@@ -4,6 +4,7 @@ import { Arrangement } from '../../components/Arrangement';
 import styles from '../../styles/recipient.module.css'
 import Image from 'next/image'
 import lettercover from "../../public/lettercover.png"
+import { useGLTF } from '@react-three/drei';
 export async function getServerSideProps(context) {
   const { id } = context.params;
 
@@ -15,35 +16,63 @@ export async function getServerSideProps(context) {
 
 }
 
+let foliageNums = ["/foliage/silverscp.glb", "/foliage/dustycp.glb", "/foliage/ferncp.glb"]
+let fillerNums = ["/filler/cosmos/cosmospinkcp.glb", "/filler/cosmos/cosmospurplecp.glb",
+                  "/filler/rose/rosecreamcp/glb", "/filler/rose/rosepeachcp/glb",
+                  "/filler/rose/rosepinkcp/glb","/filler/rose/rosepurplecp/glb", "/filler/gypsycp.glb"]
+let focalNums = ["/focal/anemone/anemoneorangecp.glb", "/focal/anemone/anemonepinkcp.glb", 
+                  "/focal/anemone/anemonepurplecp.glb",  "/focal/anemone/anemonewhitecp.glb",
+                  "/focal/peony/peonybluecp.glb", "/focal/peony/peonybpinkcp.glb", "/focal/peony/peonycreamcp.glb",
+                  "/focal/peony/peonylpinkcp.glb", "/focal/peony/peonymauvecp.glb", "/focal/sunflowercp.glb"]
+let vaseNums = ["/vase/vase1cp.glb", "/vase/vase2cp.glb", "/vase/vase3cp.glb"]
+
+const URLDecoding = (URL) => {
+  const Decoding_URL = URL.split('_')
+  const vase_inputted = parseInt(Decoding_URL[0])
+
+  const flowersUnmapped = Decoding_URL[1].split("-").map(input => {
+    if(input.includes(",")) {
+      return input.split(",")
+    } else{
+      return input
+    }
+  }) 
+
+  const messageEncoded = Decoding_URL[2].split('-').map(input => atob(input))
+  const CompleteDecode = [vase_inputted, flowersUnmapped, messageEncoded]
+  let chosenones = [flowersUnmapped[0][0], flowersUnmapped[0][1], flowersUnmapped[1], flowersUnmapped[2]]
+
+  useGLTF.preload(fillerNums[chosenones[0] - 1])
+  useGLTF.preload(fillerNums[chosenones[1] - 1])
+  useGLTF.preload(focalNums[chosenones[2] - 1])
+  useGLTF.preload(foliageNums[chosenones[3] - 1])
+  useGLTF.preload(vaseNums[vase_inputted + 1])
+
+
+  console.log(CompleteDecode)
+
+  return CompleteDecode
+}
+
 export default function Recipient(props) {
-  const [chosenFlowers, setChosenFlowers] = useState([0,0,0,0])
-  const [recipientName, setRecipientName] = useState("Clara")
-  const [noteText, setNoteText] = useState("ur cool")
-  const [vaseType, setVaseType] = useState(0)
+  
+  let recName, ntText;
+  let entireGift = URLDecoding(props.id);
 
-  const URLDecoding = (URL) => {
-    const Decoding_URL = URL.split('_')
-    const vase_inputted = parseInt(Decoding_URL[0])
+  URLDecoding(props.id)
 
-    const flowersUnmapped = Decoding_URL[1].split("-").map(input => {
-      if(input.includes(",")) {
-        return input.split(",")
-      } else{
-        return input
-      }
-    }) 
+  
+  const [chosenFlowers, setChosenFlowers] = useState([entireGift[1][0][0], entireGift[1][0][1], entireGift[1][1], entireGift[1][2]])
+  const [recipientName, setRecipientName] = useState(recName)
+  const [noteText, setNoteText] = useState(ntText)
+  const [vaseType, setVaseType] = useState(entireGift[0])
 
-    const messageEncoded = Decoding_URL[2].split('-').map(input => atob(input))
-    const CompleteDecode = [vase_inputted, flowersUnmapped, messageEncoded]
-    console.log(CompleteDecode)
 
-    return CompleteDecode
-  }
 
   useEffect(() => {
     console.log("useeffect was ran")
     // decode props
-    let vaseNum, focalNum, folNum, fill2Num, fill1Num, recName, ntText;
+    let recName, ntText;
 
 
     let entireGift = URLDecoding(props.id);
@@ -55,7 +84,7 @@ export default function Recipient(props) {
     setChosenFlowers([entireGift[1][0][0], entireGift[1][0][1], entireGift[1][1], entireGift[1][2]])
     setRecipientName(recName)
     setNoteText(ntText)
-
+    console.log(chosenFlowers)
   }, [])
 
   return (
@@ -71,12 +100,13 @@ export default function Recipient(props) {
           Giving Giraffe
         </h1>
 
-        <Arrangement chosenFlowerArr={chosenFlowers} vaseNum={vaseType}/>
-
-        <h3 className={styles.title}>
+        <h3 className={styles.botText}>
           specially made for {recipientName}
         </h3>
-        <Image className={styles.letterImg} src={lettercover}/>
+        <Arrangement chosenFlowerArr={chosenFlowers} vaseNum={vaseType}/>
+
+        
+        {/* <Image className={styles.letterImg} src={lettercover}/> */}
       </main>
     </div>
   )

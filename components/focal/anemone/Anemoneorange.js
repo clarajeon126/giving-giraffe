@@ -15,4 +15,3 @@ export default function Anemoneorange({ ...props }) {
   )
 }
 
-useGLTF.preload('/focal/anemone/anemoneorangecp.glb')

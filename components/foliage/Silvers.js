@@ -19,5 +19,3 @@ export default function Silvers({ ...props }) {
     </group>
   )
 }
-
-useGLTF.preload('/foliage/silverscp.glb')

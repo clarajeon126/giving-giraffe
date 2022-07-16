@@ -18,5 +18,3 @@ export default function Cosmospurple({ ...props }) {
     </group>
   )
 }
-
-useGLTF.preload('/filler/cosmos/cosmospurplecp.glb')

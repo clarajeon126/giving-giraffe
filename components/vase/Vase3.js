@@ -15,4 +15,3 @@ export default function Vase3({ ...props }) {
   )
 }
 
-useGLTF.preload('/vase/vase3cp.glb')
