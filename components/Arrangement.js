@@ -51,230 +51,237 @@ let filler1Coords = [cC(0,3.25), cC(2.765,1.707), cC(4,0), cC(1.528,-0.853), cC(
 
 let filler2Coords = [cC(1.218,2.183), cC(2.5,0), cC(2, 3.464), cC(0,-1), cC(-1.528, -0.853), cC(-4,0), cC(-1.528, 0.853), cC(-2, 3.464)]
 
-//chosen flowers
-let foliage = 3
-let focal = 10
-let filler1 = 1
-let filler2 = 7
-let vaseNum = 0
-
-let height = 6.5
-
-function rotationValue(coord){
-  let rad = Math.sqrt(Math.pow(coord.x, 2) + Math.pow(coord.y, 2));
-  let sinE = (rad / 2) / height
-  let angle = Math.asin(sinE)
-  return angle;
-}
-
-function rotationYValue(coord){
-  if(coord.x == 0){
-    if(coord.y > 0){
-      return 180
-    }
-    else {
-      return 0
-    }
-  }
-  else if(coord.y == 0){
-    if(coord.x > 0){
-      return 90
-    }
-    else{
-      return 0
-    }
-  }
-  else {
-    let ratio = coord.y / coord.x
-
-    let angle = Math.atan(Math.abs(ratio)) * (1/ Math.PI) * 180
-
-    if(coord.x > 0 && coord.y >> 0){
-      angle += 90
-    }
-    else if(coord.x < 0 && coord.y > 0){
-      angle += 90
-    }
-
-    if(coord.x < 0){
-      angle = 360 - angle
-    }
-    return angle
-  }
-  return 0;
-}
-
-function radValue(coord){
-  let rad = Math.sqrt(Math.pow(coord.x, 2) + Math.pow(coord.y, 2));
-  return rad;
-}
-
 function cC(xVal, yVal) {
   return {x: xVal, y: yVal};
 }
 
-function foliageCreator(coord){
-  let num = foliage
 
-  let roty = rotationYValue(coord);
+//chosen flower
+let foliage = 0
+let focal = 0
+let filler1 = 0
+let filler2 = 0
+let vaseNum = 0
 
-  let rotz = rotationValue(coord);
+let height = 6.5
 
-  if(num == 0){
-    //nothing
-  }
-  //silver dollar
-  else if(num == 1){
-    return (
-      <Silvers position={[0,0,0]} rotation-z={rotz} rotation-y={roty}  scale={[1,2,1]}/>
-    )
-  }
-  //dusty miller
-  else if(num == 2){
-    return (
-      <Dusty position={[0,0,0]} rotation-z={rotz} rotation-y={roty}  scale={[1.5,3.8,1.5]}/>
-    )
-  }
-  //fern
-  else if(num == 3){
-    return (
-      <Fern position={[0,0,0]} rotation-z={rotz} rotation-y={roty}  scale={[1.5,4,1.5]}/>
-    )
-  }
-}
-
-function fillerCreator(isFiller1, coord){
-  let num = filler1
-
-  if(!isFiller1){
-    num = filler2
-  }
-  console.log(num)
-  let roty = rotationYValue(coord);
-  
-  let rotz = rotationValue(coord);
-
-  if(num == 0){
-    //nothing
-  }
-  //cosmospink
-  else if(num == 1){
-    return ( <Cosmospink position={[0,0,0]} rotation-z={rotz} rotation-y={roty} scale={[3,4.5,3]}/> )
-  }
-  //cosmospurple
-  else if(num == 2){
-    return ( <Cosmospurple position={[0,0,0]} rotation-z={rotz} rotation-y={roty} scale={[3,4.5,3]}/> )
-  }
-  //rosecream
-  else if(num == 3){
-    return ( <Rosecream position={[0,0,0]} rotation-z={rotz} rotation-y={roty} scale={[3,4.5,3]}/> )
-  }
-  //rosepeach
-  else if(num == 4){
-    return ( <Rosepeach position={[0,0,0]} rotation-z={rotz} rotation-y={roty} scale={[3,4.5,3]}/> )
-  }
-  //rosepink
-  else if(num == 5){
-    return ( <Rosepink position={[0,0,0]} rotation-z={rotz} rotation-y={roty} scale={[3,4.5,3]}/> )
-  }
-  //rosepurple
-  else if(num == 6){
-    return ( <Rosepurple position={[0,0,0]} rotation-z={rotz} rotation-y={roty} scale={[3,4.5,3]}/> )
-  }
-  //gypsy
-  else if(num == 7){
-    return ( <Gypsy position={[0,0,0]} rotation-z={rotz} rotation-y={roty} scale={[3.2,4.2,3.2]}/> )
-  }
-}
-
-function focalCreator(coord){
-  let num = focal
-
-  let roty = rotationYValue(coord);
-  
-  let rotz = rotationValue(coord);
-  
-  if(num == 0){
-    //nothing
-  }
-  //anemoneorange
-  else if(num == 1){
-    return ( <Anemoneorange position={[0,2,0]} rotation-z={rotz} rotation-y={roty}  scale={[2, 4,2]}/> )
-  }
-  //anemonepink
-  else if(num == 2){
-    return ( <Anemonepink position={[0,2,0]} rotation-z={rotz} rotation-y={roty}  scale={[2, 4,2]}/> )
-  }
-  //anemonepurple
-  else if(num == 3){
-    return ( <Anemonepurple position={[0,2,0]} rotation-z={rotz} rotation-y={roty}  scale={[2, 4,2]}/> )
-  }
-  //anemonewhite
-  else if(num == 4){
-    return ( <Anemonewhite position={[0,2,0]} rotation-z={rotz} rotation-y={roty}  scale={[2, 4,2]}/> )
-  }
-  //peonyblue
-  else if(num == 5){
-    return ( <Peonyblue position={[0,2,0]} rotation-z={rotz} rotation-y={roty}  scale={[2.5,5,2.5]}/> )
-  }
-  //peonybpink
-  else if(num == 6){
-    return ( <Peonybpink position={[0,2,0]} rotation-z={rotz} rotation-y={roty}  scale={[2.5,5,2.5]}/> )
-  }
-  //peonycream
-  else if(num == 7){
-    return ( <Peonycream position={[0,2,0]} rotation-z={rotz} rotation-y={roty}  scale={[2.5,5,2.5]}/> )
-  }
-  //peonylpink
-  else if(num == 8){
-    return ( <Peonylpink position={[0,2,0]} rotation-z={rotz} rotation-y={roty}  scale={[2.5,5,2.5]}/> )
-  }
-  //peonymauve
-  else if(num == 9){
-    return ( <Peonymauve position={[0,2,0]} rotation-z={rotz} rotation-y={roty}  scale={[2.5,5,2.5]}/> )
-  }
-  //Sunflower
-  else if(num == 10){
-    return ( <Sunflower position={[0,2,0]} rotation-z={rotz} rotation-y={roty}  scale={[2,3.8,2]}/> )
-  }
-
-}
-function vaseCreator(){
-  if(vaseNum == 0){
-
-  }
-  else if(vaseNum == 1){
-    return( <Vase1 position={[0,-15,0]} scale={[10,10,10]}/>
-    )
-  }
-  else if(vaseNum == 2){
-    return(<Vase2 position={[0,-15,0]} scale={[10,10,10]}/>
-    )
-  }
-  else if(vaseNum == 3){
-    return (<Vase3 position={[0,-15,0]} scale={[10,10,10]}/>
-    )
-  }
-}
-function filler1Thing(coord){
-  return fillerCreator(true, coord)
-  
-}
-function filler2Thing(coord){
-  return fillerCreator(false, coord)
-}
 
 export const Arrangement = (props) => {
   const [chosenFlowers, setChosenFlowers] = useState(props.chosenFlowerArr)
   const [vaseType, setVaseType] = useState(props.vaseNum)
 
+  function rotationValue(coord){
+    let rad = Math.sqrt(Math.pow(coord.x, 2) + Math.pow(coord.y, 2));
+    let sinE = (rad / 2) / height
+    let angle = Math.asin(sinE)
+    return angle;
+  }
+  
+  function rotationYValue(coord){
+    if(coord.x == 0){
+      if(coord.y > 0){
+        return 180
+      }
+      else {
+        return 0
+      }
+    }
+    else if(coord.y == 0){
+      if(coord.x > 0){
+        return 90
+      }
+      else{
+        return 0
+      }
+    }
+    else {
+      let ratio = coord.y / coord.x
+  
+      let angle = Math.atan(Math.abs(ratio)) * (1/ Math.PI) * 180
+  
+      if(coord.x > 0 && coord.y >> 0){
+        angle += 90
+      }
+      else if(coord.x < 0 && coord.y > 0){
+        angle += 90
+      }
+  
+      if(coord.x < 0){
+        angle = 360 - angle
+      }
+      return angle
+    }
+    return 0;
+  }
+  
+  function radValue(coord){
+    let rad = Math.sqrt(Math.pow(coord.x, 2) + Math.pow(coord.y, 2));
+    return rad;
+  }
+  
+
+  function foliageCreator(coord){
+    let num = chosenFlowers[3]
+  
+    let roty = rotationYValue(coord);
+  
+    let rotz = rotationValue(coord);
+  
+    if(num == 0){
+      //nothing
+    }
+    //silver dollar
+    else if(num == 1){
+      return (
+        <Silvers position={[0,0,0]} rotation-z={rotz} rotation-y={roty}  scale={[1,2,1]}/>
+      )
+    }
+    //dusty miller
+    else if(num == 2){
+      return (
+        <Dusty position={[0,0,0]} rotation-z={rotz} rotation-y={roty}  scale={[1.5,3.8,1.5]}/>
+      )
+    }
+    //fern
+    else if(num == 3){
+      return (
+        <Fern position={[0,0,0]} rotation-z={rotz} rotation-y={roty}  scale={[1.5,4,1.5]}/>
+      )
+    }
+  }
+  
+  function fillerCreator(isFiller1, coord){
+    let num = chosenFlowers[0]
+  
+    if(!isFiller1){
+      num = chosenFlowers[1]
+    }
+    console.log(num)
+    let roty = rotationYValue(coord);
+    
+    let rotz = rotationValue(coord);
+  
+    if(num == 0){
+      //nothing
+    }
+    //cosmospink
+    else if(num == 1){
+      return ( <Cosmospink position={[0,0,0]} rotation-z={rotz} rotation-y={roty} scale={[3,4.5,3]}/> )
+    }
+    //cosmospurple
+    else if(num == 2){
+      return ( <Cosmospurple position={[0,0,0]} rotation-z={rotz} rotation-y={roty} scale={[3,4.5,3]}/> )
+    }
+    //rosecream
+    else if(num == 3){
+      return ( <Rosecream position={[0,0,0]} rotation-z={rotz} rotation-y={roty} scale={[3,4.5,3]}/> )
+    }
+    //rosepeach
+    else if(num == 4){
+      return ( <Rosepeach position={[0,0,0]} rotation-z={rotz} rotation-y={roty} scale={[3,4.5,3]}/> )
+    }
+    //rosepink
+    else if(num == 5){
+      return ( <Rosepink position={[0,0,0]} rotation-z={rotz} rotation-y={roty} scale={[3,4.5,3]}/> )
+    }
+    //rosepurple
+    else if(num == 6){
+      return ( <Rosepurple position={[0,0,0]} rotation-z={rotz} rotation-y={roty} scale={[3,4.5,3]}/> )
+    }
+    //gypsy
+    else if(num == 7){
+      return ( <Gypsy position={[0,0,0]} rotation-z={rotz} rotation-y={roty} scale={[3.2,4.2,3.2]}/> )
+    }
+  }
+  
+  function focalCreator(coord){
+    let num = chosenFlowers[2]
+  
+    let roty = rotationYValue(coord);
+    
+    let rotz = rotationValue(coord);
+    
+    if(num == 0){
+      //nothing
+    }
+    //anemoneorange
+    else if(num == 1){
+      return ( <Anemoneorange position={[0,2,0]} rotation-z={rotz} rotation-y={roty}  scale={[2, 4,2]}/> )
+    }
+    //anemonepink
+    else if(num == 2){
+      return ( <Anemonepink position={[0,2,0]} rotation-z={rotz} rotation-y={roty}  scale={[2, 4,2]}/> )
+    }
+    //anemonepurple
+    else if(num == 3){
+      return ( <Anemonepurple position={[0,2,0]} rotation-z={rotz} rotation-y={roty}  scale={[2, 4,2]}/> )
+    }
+    //anemonewhite
+    else if(num == 4){
+      return ( <Anemonewhite position={[0,2,0]} rotation-z={rotz} rotation-y={roty}  scale={[2, 4,2]}/> )
+    }
+    //peonyblue
+    else if(num == 5){
+      return ( <Peonyblue position={[0,2,0]} rotation-z={rotz} rotation-y={roty}  scale={[2.5,5,2.5]}/> )
+    }
+    //peonybpink
+    else if(num == 6){
+      return ( <Peonybpink position={[0,2,0]} rotation-z={rotz} rotation-y={roty}  scale={[2.5,5,2.5]}/> )
+    }
+    //peonycream
+    else if(num == 7){
+      return ( <Peonycream position={[0,2,0]} rotation-z={rotz} rotation-y={roty}  scale={[2.5,5,2.5]}/> )
+    }
+    //peonylpink
+    else if(num == 8){
+      return ( <Peonylpink position={[0,2,0]} rotation-z={rotz} rotation-y={roty}  scale={[2.5,5,2.5]}/> )
+    }
+    //peonymauve
+    else if(num == 9){
+      return ( <Peonymauve position={[0,2,0]} rotation-z={rotz} rotation-y={roty}  scale={[2.5,5,2.5]}/> )
+    }
+    //Sunflower
+    else if(num == 10){
+      return ( <Sunflower position={[0,2,0]} rotation-z={rotz} rotation-y={roty}  scale={[2,3.8,2]}/> )
+    }
+  
+  }
+  function vaseCreator(){
+    let vaseNum = vaseType
+    if(vaseNum == 0){
+  
+    }
+    else if(vaseNum == 1){
+      return( <Vase1 position={[0,-14,0]}  scale={[10,10,10]}/>
+      )
+    }
+    else if(vaseNum == 2){
+      return(<Vase2 position={[0,-14,0]} scale={[10,10,10]}/>
+      )
+    }
+    else if(vaseNum == 3){
+      return (<Vase3 position={[0,-14,0]} rotation-x={0} scale={[10,10,10]}/>
+      )
+    }
+  }
+  
+  function filler1Thing(coord){
+    return fillerCreator(true, coord)
+    
+  }
+  function filler2Thing(coord){
+    return fillerCreator(false, coord)
+  }
+
+  console.log(chosenFlowers)
   useEffect(() => {
     console.log("flowers loaded up")
-    foliage = chosenFlowers[3]
-    focal = chosenFlowers[2]
-    filler1 = chosenFlowers[1]
-    filler1 = chosenFlowers[0]
-    vaseNum = vaseType
+    // foliage = chosenFlowers[3]
+    // focal = chosenFlowers[2]
+    // filler1 = chosenFlowers[1]
+    // filler1 = chosenFlowers[0]
+    // vaseNum = vaseType
+    // setVaseType(vaseNum)
     //decode the id
   }, [])
 

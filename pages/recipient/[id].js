@@ -63,23 +63,27 @@ export default function Recipient(props) {
 
     const flowersUnmapped = Decoding_URL[1].split("-").map(input => {
       if(input.includes(",")) {
-        return input.split(",")
+        return ((input)).split(",").map(inputo => {
+          return (parseInt(inputo) + 1)
+        })
       } else{
-        return input
+        return ([parseInt(input) + 1, parseInt(input) + 1])
       }
-    }) 
+    })
 
-  let recName, ntText, sendName;
+    const messageEncoded = Decoding_URL[2].split('-').map(input => atob(input))
+    const CompleteDecode = [vase_inputted, flowersUnmapped, messageEncoded]
+    return CompleteDecode
+  }
+
   let entireGift = URLDecoding(props.id);
-
+  console.log(entireGift)
   
-  const [chosenFlowers, setChosenFlowers] = useState([entireGift[1][0][0], entireGift[1][0][1], entireGift[1][1], entireGift[1][2]])
-  const [recipientName, setRecipientName] = useState(recName)
-  const [noteText, setNoteText] = useState(ntText)
+  const [chosenFlowers, setChosenFlowers] = useState([entireGift[1][0][0], entireGift[1][0][1], entireGift[1][1][0], entireGift[1][2][0]])
+  const [recipientName, setRecipientName] = useState(entireGift[2][1])
+  const [noteText, setNoteText] = useState(entireGift[2][0])
   const [vaseType, setVaseType] = useState(entireGift[0])
-  const [gifterName, setGifterName] = useState(sendName)  
-
-
+  const [gifterName, setGifterName] = useState(entireGift[2][2])  
 
   const [cardOpen, setCardOpen] = useState(false);
 
@@ -88,22 +92,6 @@ export default function Recipient(props) {
   useEffect(() => {
     console.log("useeffect was ran")
     // decode props
-    let recName, ntText;
-
-
-    let entireGift = URLDecoding(props.id);
-
-    console.log(entireGift)
-    URLDecoding(props.id)
-    //set states
-    setVaseType(entireGift[0])
-    setChosenFlowers([entireGift[1][0][0], entireGift[1][0][1], entireGift[1][1], entireGift[1][2]])
-    setRecipientName(recName)
-    setNoteText(ntText)
-    console.log(chosenFlowers)
-    setRecipientName(entireGift[2][2])
-    setGifterName(entireGift[2][1])
-    setNoteText(entireGift[2][0])
   }, [])
 
   return (
@@ -127,8 +115,7 @@ export default function Recipient(props) {
               </h3>
               <Arrangement chosenFlowerArr={chosenFlowers} vaseNum={vaseType}/>
 
-        
-            <Image onClick={() => {setCardOpen(true)}} className={styles.letterImg} src={lettercover}/>
+              <Image onClick={() => {setCardOpen(true)}} className={styles.letterImg} src={lettercover}/>
         </div>)
         : 
         (
@@ -144,3 +131,4 @@ export default function Recipient(props) {
     </div>
   )
 }
+
