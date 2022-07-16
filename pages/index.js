@@ -3,6 +3,7 @@ import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import React, { useState, useEffect, useRef } from "react";
 import { useGLTF } from '@react-three/drei';
+import { useMediaQuery } from 'react-responsive'
 
 //components
 import { Arrangement } from '../components/Arrangement';
@@ -54,6 +55,8 @@ let focalNums = ["/focal/anemone/anemoneorangecp.glb", "/focal/anemone/anemonepi
                   "/focal/peony/peonybluecp.glb", "/focal/peony/peonybpinkcp.glb", "/focal/peony/peonycreamcp.glb",
                   "/focal/peony/peonylpinkcp.glb", "/focal/peony/peonymauvecp.glb", "/focal/sunflowercp.glb"]
 let vaseNums = ["/vase/vase1cp.glb", "/vase/vase2cp.glb", "/vase/vase3cp.glb"]
+
+
 
 export const VaseList = [
   [1, "White Vase", "Vase Subtext", WhiteVase],
@@ -188,6 +191,7 @@ export const FlowerList = [
 
 export default function Home() {
 
+  const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1224px)' })
 
   const [vase, setVase] = useState(-1);
   const [reloading, setReloading] = useState(false);
@@ -275,6 +279,15 @@ export default function Home() {
         <meta name="msapplication-TileImage" content="/ms-icon-144x144.png" />
         <meta name="theme-color" content="#ffffff" />
       </Head>
+{/* 
+      {isTabletOrMobile ? (
+    <div>
+      <p>ok</p>
+    </div>
+      ) : ( undefined )}
+
+ */}
+
 
       <main className={styles.main}>
         <div>
@@ -514,6 +527,8 @@ export default function Home() {
         ) : (<Card Gifter={noteGifter} Recipient={noteRecipient} Content={noteContent} Preview={"true"}></Card>)}
           </div>
       </main>
+            )
+          }
     </div>
   )
 }
