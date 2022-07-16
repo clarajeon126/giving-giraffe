@@ -1,7 +1,9 @@
-import { OrbitControls } from '@react-three/drei';
-import { Canvas, extend, useThree } from '@react-three/fiber';
+import { Html, Image, OrbitControls, Text } from '@react-three/drei';
+import { Canvas, extend, useLoader, useThree, Dom } from '@react-three/fiber';
 import React, { Suspense, useEffect, useState } from 'react'
-import { AxesHelper } from 'three';
+import { AxesHelper, PlaneBufferGeometry, TextureLoader } from 'three';
+
+import img from '../public/spinner.gif'
 
 //filler
 import Cosmospink from './filler/cosmos/Cosmospink';
@@ -280,13 +282,18 @@ export const Arrangement = (props) => {
   }, [props.chosenFlowerArr])
 
 
+const Fallback = () => (
+  <Html>
+    <div>Loading...</div>
+  </Html>
+)
+
   return (
     <Canvas style={canvasStyle} camera={{ fov: 75, position: [0, 0, 35] }}>
       <ambientLight intensity={.3}/>
       <spotLight intensity={3} angle={0.2 + Math.PI /2} penumbra={0.5} position={[0, 50, 30]} castShadow />
       <spotLight intensity={3} angle={-0.2 + Math.PI /2} penumbra={0.5} position={[0, 50, -30]} castShadow />
-
-      <Suspense fallback={null}>
+      <Suspense fallback={<Fallback />}>
         {vaseCreator()}
         {foliageCoords.map(foliageCreator)}
         {filler1Coords.map(filler1Thing)}
