@@ -17,13 +17,15 @@
     font-family: 'GT-Maru';
 }
 
-<<<<<<< HEAD
-
-=======
 .botText {
     display: block;
     height: 4vh;
     text-align: center;
     font-family: 'GT-Maru';
 }
->>>>>>> 704524c40b4ffca6423beda4392c93d438e88212
+
+.letterImg {
+    position: absolute;
+    left: 20vw;
+    top: 20vh;
+}

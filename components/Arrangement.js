@@ -1,8 +1,11 @@
 import { OrbitControls } from '@react-three/drei';
 import { Canvas, extend } from '@react-three/fiber';
 import React, { Suspense, useEffect, useState } from 'react'
-import Sunflower from './Sunflower';
-import Vase1 from './Vase1';
+import Cosmospink from './filler/cosmos/Cosmospink';
+import Dusty from './foliage/Dusty';
+import Fern from './foliage/Fern';
+import Silvers from './foliage/Silvers';
+import Vase1 from './vase/Vase1';
 
 const canvasStyle = {
   width: '100vw',
@@ -25,28 +28,61 @@ let focal = 2
 let filler1 = 1
 let filler2 = 2
 
+
 function rotationValue(coord){
   let rad = Math.sqrt(Math.pow(coord.x, 2) + Math.pow(coord.y, 2));
-  return Math.PI * (rad / 180);
+  return Math.PI * (rad / 180) * 7;
+}
+
+function rotationXValue(coord){
+  return rotationValue(coord) * (coord.x /radValue(coord));
+}
+
+function rotationZValue(coord){
+  return rotationValue(coord)  * (coord.y /radValue(coord));
+}
+
+function radValue(coord){
+  let rad = Math.sqrt(Math.pow(coord.x, 2) + Math.pow(coord.y, 2));
+  return rad;
 }
 
 function cC(xVal, yVal) {
   return {x: xVal, y: yVal};
 }
 
-function foliageCreator(num){
+function foliageCreator(coord){
+  let num = foliage
+
+  let rotx = rotationXValue(coord);
+
+  let rotz = rotationZValue
+  
   if(num == 0){
-    
+
   }
+  //silver dollar
   else if(num == 1){
-    
+    return (
+      <Silvers position={[coord.x,0,coord.y]} rotation-x={rotx} rotation-z={rotz} scale={[1,2,1]}/>
+    )
   }
+  //dusty miller
   else if(num == 2){
-
+    return (
+      <Dusty position={[coord.x,0,coord.y]} />
+    )
   }
+  //fern
   else if(num == 3){
-
+    return (
+      <Fern position={[coord.x,0,coord.y]} />
+    )
   }
+}
+
+function fillerCreator(coord){
+
 }
 
 
@@ -57,7 +93,7 @@ export const Arrangement = (props) => {
   useEffect(() => {
     console.log("flowers loaded up")
 
-    //decode the ide
+    //decode the id
   }, [])
 
   return (
@@ -65,12 +101,10 @@ export const Arrangement = (props) => {
       <ambientLight intensity={1} />
       {/* <spotLight intensity={0.5} angle={0.1} penumbra={1} position={[10, 15, 10]} castShadow /> */}
       <Suspense fallback={null}>
-        <Vase1 />
-        {foliageCoords.map((coord) => (
-          <div className="user">{user}</div>
-        ))}
-        <Sunflower position={[0,0,0]} scale={[0.1,0.1,0.1]} rotation-x={Math.PI / 9} />
-        <Sunflower scale={[0.1,0.1,0.1]} rotation-x={0} />
+        <Vase1 position={[0,-12,0]} scale={[10,10,10]}/>
+        {foliageCoords.map(foliageCreator)}
+        {/* <Cosmospink position={[0,0,0]} scale={[0.1,0.1,0.1]} rotation-x={Math.PI / 9} /> */}
+        {/* <Sunflower scale={[0.1,0.1,0.1]} rotation-x={0} /> */}
       </Suspense>
       <OrbitControls />
     </Canvas>

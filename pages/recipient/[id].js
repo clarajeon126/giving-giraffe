@@ -2,9 +2,11 @@ import Head from 'next/head'
 import { useEffect, useState } from 'react';
 import { Arrangement } from '../../components/Arrangement';
 import styles from '../../styles/recipient.module.css'
-
+import Image from 'next/image'
+import lettercover from "../../public/lettercover.png"
 export async function getServerSideProps(context) {
   const { id } = context.params;
+
   return {
       props: {
         id
@@ -19,16 +21,41 @@ export default function Recipient(props) {
   const [noteText, setNoteText] = useState("ur cool")
   const [vaseType, setVaseType] = useState(0)
 
-  useEffect(() => {
-    // decode props
+  const URLDecoding = (URL) => {
+    const Decoding_URL = URL.split('_')
+    const vase_inputted = parseInt(Decoding_URL[0])
 
+    const flowersUnmapped = Decoding_URL[1].split("-").map(input => {
+      if(input.includes(",")) {
+        return input.split(",")
+      } else{
+        return input
+      }
+    }) 
+
+    const messageEncoded = Decoding_URL[2].split('-').map(input => atob(input))
+    const CompleteDecode = [vase_inputted, flowersUnmapped, messageEncoded]
+    console.log(CompleteDecode)
+
+    return CompleteDecode
+  }
+
+  useEffect(() => {
+    console.log("useeffect was ran")
+    // decode props
     let vaseNum, focalNum, folNum, fill2Num, fill1Num, recName, ntText;
 
+
+    let entireGift = URLDecoding(props.id);
+
+    console.log(entireGift)
+    URLDecoding(props.id)
     //set states
-    setVaseType(vaseNum)
-    setChosenFlowers([folNum, focalNum, fill1Num, fill2Num])
+    setVaseType(entireGift[0])
+    setChosenFlowers([entireGift[1][0][0], entireGift[1][0][1], entireGift[1][1], entireGift[1][2]])
     setRecipientName(recName)
     setNoteText(ntText)
+
   }, [])
 
   return (
@@ -49,6 +76,7 @@ export default function Recipient(props) {
         <h3 className={styles.title}>
           specially made for {recipientName}
         </h3>
+        <Image className={styles.letterImg} src={lettercover}/>
       </main>
     </div>
   )
