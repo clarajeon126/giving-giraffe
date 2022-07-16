@@ -37,6 +37,18 @@ import CreamSprayRose from '../assets/FlowerThumbnails/SprayRose/Cream.png'
 import LightPeachSprayRose from '../assets/FlowerThumbnails/SprayRose/LightPeach.png'
 import LightPinkSprayRose from '../assets/FlowerThumbnails/SprayRose/LightPink.png'
 import LightPurpleSprayRose from '../assets/FlowerThumbnails/SprayRose/LightPurple.png'
+import { useGLTF } from '@react-three/drei';
+
+
+let foliageNums = ["/foliage/silverscp.glb", "/foliage/dustycp.glb", "/foliage/ferncp.glb"]
+let fillerNums = ["/filler/cosmos/cosmospinkcp.glb", "/filler/cosmos/cosmospurplecp.glb",
+                  "/filler/rose/rosecreamcp/glb", "/filler/rose/rosepeachcp/glb",
+                  "/filler/rose/rosepinkcp/glb","/filler/rose/rosepurplecp/glb", "/filler/gypsycp.glb"]
+let focalNums = ["/focal/anemone/anemoneorangecp.glb", "/focal/anemone/anemonepinkcp.glb", 
+                  "/focal/anemone/anemonepurplecp.glb",  "/focal/anemone/anemonewhitecp.glb",
+                  "/focal/peony/peonybluecp.glb", "/focal/peony/peonybpinkcp.glb", "/focal/peony/peonycreamcp.glb",
+                  "/focal/peony/peonylpinkcp.glb", "/focal/peony/peonymauvecp.glb", "/focal/sunflowercp.glb"]
+let vaseNums = ["/vase/vase1cp.glb", "/vase/vase2cp.glb", "/vase/vase3cp.glb"]
 
 export const VaseList = [
   [1, "White Vase", "Vase Subtext", WhiteVase],
@@ -206,6 +218,16 @@ export default function Home() {
   const [step, setStep] = useState(1);
   const [URL, setURL] = useState();
 
+  useEffect(() => {
+    let chosenones = flowersSelectedPreview
+    console.log("here")
+    useGLTF.preload(fillerNums[chosenones[0] - 1])
+    useGLTF.preload(fillerNums[chosenones[1] - 1])
+    useGLTF.preload(focalNums[chosenones[2] - 1])
+    useGLTF.preload(foliageNums[chosenones[3] - 1])
+    useGLTF.preload(vaseNums[vase + 1])
+  
+  }, [fillers,foliage,focal,vase])
   const URLGeneration = () => {
     const Content = [vase, flowersSelected.join('-'), note.join('-')]
     const ContentSpaced = Content.join('_')

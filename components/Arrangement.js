@@ -35,8 +35,8 @@ import Vase2 from './vase/Vase2';
 import Vase3 from './vase/Vase3';
 
 const canvasStyle = {
-  width: '100vw',
-  height: '100vh'
+  width: '100%',
+  height: '100%'
 }
 
 
