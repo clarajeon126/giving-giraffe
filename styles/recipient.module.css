@@ -31,3 +31,48 @@
     left: 20vw;
     top: 20vh;
 }
+
+
+.card {
+    background-color: #FFDADA;
+    transform: rotate(-12deg);
+    margin-left: 16px;
+    margin-right: 16px;
+    height: 100vh;
+    width: 100vw;
+    justify-content: center;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.card p {
+font-style: normal;
+font-weight: 700;
+font-size: 48px;
+line-height: 58px;
+margin-left: 32px;
+
+}
+
+.cardClose {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 58px;
+    margin-left: 32px;    
+}
+
+.leftpanel {
+    width: 50vw;
+    display: block;
+}
+
+.rightpanel {
+    width: 50vw;
+    border-left: 1px solid #7A4323;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
