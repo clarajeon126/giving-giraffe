@@ -314,7 +314,7 @@ export default function Home() {
           <div className={styles.vaseList}>
             {VaseList && VaseList.map((vaseArray, i) => (
             
-            <div onClick={() => {
+            <div key={i} onClick={() => {
               setVase(vaseArray[0])
               setReloading(true)
               setTimeout(function() {
@@ -353,11 +353,11 @@ export default function Home() {
             
             {FlowerList && FlowerList.map((layerOfFlowers, layerIndex) => (
               
-            <div className={styles.flowerBed}> 
+            <div key={layerIndex} className={styles.flowerBed}> 
             {layerOfFlowers && layerOfFlowers.map((flower, flowerIndex) => (
 
               
-            <div className={styles.entireFlower} onClick={() => {
+            <div key={layerIndex} className={styles.entireFlower} onClick={() => {
               setReloading(true)
               setTimeout(function() {
                 setReloading(false)
