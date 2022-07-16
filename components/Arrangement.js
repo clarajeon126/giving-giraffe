@@ -34,13 +34,13 @@ import Vase1 from './vase/Vase1';
 import Vase2 from './vase/Vase2';
 import Vase3 from './vase/Vase3';
 
+
 const canvasStyle = {
   width: '100%',
   height: '100%'
 }
 
-
-
+//coords to place on the vase
 let foliageCoords = [cC(0,4.5),cC(3.897,2.25), cC(3.897,-2.25),cC(1.528,0.853), 
                     cC(1.218,-2.183),cC(0,-4.5), cC(-1.528,-0.853), cC(-3.897,-2.25), 
                     cC(-3.897,2.25), cC(-1.218, 2.183)];
@@ -273,9 +273,9 @@ export const Arrangement = (props) => {
     return fillerCreator(false, coord)
   }
 
-  console.log(chosenFlowers)
   useEffect(() => {
     console.log("flowers loaded up")
+    setChosenFlowers(props.chosenFlowerArr)
     // foliage = chosenFlowers[3]
     // focal = chosenFlowers[2]
     // filler1 = chosenFlowers[1]
@@ -283,7 +283,7 @@ export const Arrangement = (props) => {
     // vaseNum = vaseType
     // setVaseType(vaseNum)
     //decode the id
-  }, [])
+  }, [props.chosenFlowerArr])
 
 
   return (

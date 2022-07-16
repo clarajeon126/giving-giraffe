@@ -114,7 +114,10 @@ export default function Recipient(props) {
               </h3>
 
               <Box className={styles.box} />
-              <Arrangement className={styles.argmt} chosenFlowerArr={chosenFlowers} vaseNum={vaseType}/>
+              <div  className={styles.argmt}>
+                <Arrangement chosenFlowerArr={chosenFlowers} vaseNum={vaseType}/>
+
+              </div >
               <div className={styles.letterImg}>
                 <Image onClick={() => {setCardOpen(true)}}  src={lettercover}/>
               </div>

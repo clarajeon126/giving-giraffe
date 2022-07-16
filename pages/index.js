@@ -2,28 +2,22 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import React, { useState, useEffect, useRef } from "react";
-import OrangeVase from '../assets/FlowerThumbnails/Vases/OrangeVase.png'
-import WhiteVase from '../assets/FlowerThumbnails/Vases/WhiteVase.png'
-import YellowVase from '../assets/FlowerThumbnails/Vases/YellowVase.png'
+import { useGLTF } from '@react-three/drei';
+
+//components
 import { Arrangement } from '../components/Arrangement';
 import { Card } from '../components/Card';
 
+//vase
+import OrangeVase from '../assets/FlowerThumbnails/Vases/OrangeVase.png'
+import WhiteVase from '../assets/FlowerThumbnails/Vases/WhiteVase.png'
+import YellowVase from '../assets/FlowerThumbnails/Vases/YellowVase.png'
+
+//focal
 import DarkPurpleAnemone from '../assets/FlowerThumbnails/Anemone/darkpurple.png'
 import LightPinkAnemone from '../assets/FlowerThumbnails/Anemone/lightpink.png'
 import OrangeAnemone from '../assets/FlowerThumbnails/Anemone/orange.png'
 import WhiteAnemone from '../assets/FlowerThumbnails/Anemone/white.png'
-
-import LightPinkCosmos from '../assets/FlowerThumbnails/Cosmos/lightpink.png'
-import LightPurpleCosmos from '../assets/FlowerThumbnails/Cosmos/lightpurple.png'
-import WhiteYellowCosmos from '../assets/FlowerThumbnails/Cosmos/whiteyellow.png'
-
-import Gyps from '../assets/FlowerThumbnails/Gyps/Gyps.png'
-
-import Sunflower from '../assets/FlowerThumbnails/Sunflower/Sunflower.png'
-
-import DustyMiller from '../assets/FlowerThumbnails/DustyMiller/DustyMiller.png'
-
-import LeatherLeafFern from '../assets/FlowerThumbnails/LeatherLeafFern/leatherleaffern.png'
 
 import BrightPinkPeony from '../assets/FlowerThumbnails/Peony/BrightPink.png'
 import BrownPeony from '../assets/FlowerThumbnails/Peony/BrownPink.png'
@@ -31,19 +25,30 @@ import CreamPeony from '../assets/FlowerThumbnails/Peony/Cream.png'
 import LightBluePeony from '../assets/FlowerThumbnails/Peony/LightBlue.png'
 import LinkPinkPeony from '../assets/FlowerThumbnails/Peony/LightPink.png'
 
-import SilverDollarEucalyptus from '../assets/FlowerThumbnails/SilverDollarEucalyptus/Straight.png'
+import Sunflower from '../assets/FlowerThumbnails/Sunflower/Sunflower.png'
+
+//filler
+import LightPinkCosmos from '../assets/FlowerThumbnails/Cosmos/lightpink.png'
+import LightPurpleCosmos from '../assets/FlowerThumbnails/Cosmos/lightpurple.png'
+import WhiteYellowCosmos from '../assets/FlowerThumbnails/Cosmos/whiteyellow.png'
 
 import CreamSprayRose from '../assets/FlowerThumbnails/SprayRose/Cream.png'
 import LightPeachSprayRose from '../assets/FlowerThumbnails/SprayRose/LightPeach.png'
 import LightPinkSprayRose from '../assets/FlowerThumbnails/SprayRose/LightPink.png'
 import LightPurpleSprayRose from '../assets/FlowerThumbnails/SprayRose/LightPurple.png'
-import { useGLTF } from '@react-three/drei';
 
+import Gyps from '../assets/FlowerThumbnails/Gyps/Gyps.png'
 
+//fern
+import SilverDollarEucalyptus from '../assets/FlowerThumbnails/SilverDollarEucalyptus/Straight.png'
+import DustyMiller from '../assets/FlowerThumbnails/DustyMiller/DustyMiller.png'
+import LeatherLeafFern from '../assets/FlowerThumbnails/LeatherLeafFern/leatherleaffern.png'
+
+//names for the 3d models to import separately
 let foliageNums = ["/foliage/silverscp.glb", "/foliage/dustycp.glb", "/foliage/ferncp.glb"]
 let fillerNums = ["/filler/cosmos/cosmospinkcp.glb", "/filler/cosmos/cosmospurplecp.glb",
-                  "/filler/rose/rosecreamcp/glb", "/filler/rose/rosepeachcp/glb",
-                  "/filler/rose/rosepinkcp/glb","/filler/rose/rosepurplecp/glb", "/filler/gypsycp.glb"]
+                  "/filler/rose/rosecreamcp.glb", "/filler/rose/rosepeachcp.glb",
+                  "/filler/rose/rosepinkcp.glb","/filler/rose/rosepurplecp.glb", "/filler/gypsycp.glb"]
 let focalNums = ["/focal/anemone/anemoneorangecp.glb", "/focal/anemone/anemonepinkcp.glb", 
                   "/focal/anemone/anemonepurplecp.glb",  "/focal/anemone/anemonewhitecp.glb",
                   "/focal/peony/peonybluecp.glb", "/focal/peony/peonybpinkcp.glb", "/focal/peony/peonycreamcp.glb",
@@ -60,48 +65,42 @@ export const FlowerList = [
   [
     [
       1,
-      "Cream Spray Rose",
-      "Flower Description",
-      CreamSprayRose
-    ],
-    [
-      2,
-      "Light Peach Spray Rose",
-      "Flower Description",
-      LightPeachSprayRose
-    ],
-    [
-      3,
-      "Light Purple Spray Rose",
-      "Flower Description",
-      LightPurpleSprayRose
-    ],
-    [
-      4,
-      "Light Pink Spray Rose",
-      "Flower Description",
-      LightPinkSprayRose
-    ],
-    [
-      5,
-      "Cream Cosmos",
-      "Flower Description",
-      WhiteYellowCosmos
-    ],
-    [
-      6,
       "Light Pink Cosmos",
       "Flower Description",
       LightPinkCosmos
     ],
     [
-      7,
+      2,
       "Light Purple Cosmos",
       "Flower Description",
       LightPurpleCosmos
     ],
     [
-      8,
+      3,
+      "Cream Spray Rose",
+      "Flower Description",
+      CreamSprayRose
+    ],
+    [
+      4,
+      "Light Peach Spray Rose",
+      "Flower Description",
+      LightPeachSprayRose
+    ],
+    [
+      5,
+      "Light Pink Spray Rose",
+      "Flower Description",
+      LightPinkSprayRose
+    ],
+    [
+      6,
+      "Light Purple Spray Rose",
+      "Flower Description",
+      LightPurpleSprayRose
+    ],
+    [
+      7,
       "Gyps",
       "Flower Description",
       Gyps
@@ -128,17 +127,18 @@ export const FlowerList = [
     ]
   ],
   [
+
     [
       1,
-      "White Anemone",
-      "Flower Description",
-      WhiteAnemone
-    ],
-    [
-      2,
       "Orange Anemone",
       "Flower Description",
       OrangeAnemone
+    ],
+    [
+      2,
+      "Light Pink Anemone",
+      "Flower Description",
+      LightPinkAnemone
     ],
     [
       3,
@@ -148,10 +148,11 @@ export const FlowerList = [
     ],
     [
       4,
-      "Light Pink Anemone",
+      "White Anemone",
       "Flower Description",
-      LightPinkAnemone
+      WhiteAnemone
     ],
+
     [
       5,
       "Light Blue Peony",
@@ -160,25 +161,25 @@ export const FlowerList = [
     ],
     [
       6,
-      "Light Pink Peony",
-      "Flower Description",
-      LinkPinkPeony
-    ],
-    [
-      7,
       "Bright Pink Peony",
       "Flower Description",
       BrightPinkPeony
     ],
     [
-      8,
+      7,
       "Cream Peony",
       "Flower Description",
       CreamPeony
     ],
     [
+      8,
+      "Light Pink Peony",
+      "Flower Description",
+      LinkPinkPeony
+    ],
+    [
       9,
-      "Red Cream Peony",
+      "Mauve Peony",
       "Flower Description",
       BrownPeony
     ],
@@ -197,12 +198,11 @@ export default function Home() {
   const [vase, setVase] = useState(-1);
   const [copy, setCopy] = useState(false);
 
-
   const [fillers, setFillers] = useState([]);
   const [foliage, setFoliage] = useState(-1);
   const [focal, setFocal] = useState(-1);
   const flowersSelected = [fillers, foliage, focal];
-  const flowersSelectedPreview = [fillers[0], fillers[1], foliage, focal];
+  const [selectedFlowers, setSelectedFlowers] = useState([0,0,0,0])
 
   const [noteGifter, setNoteGifter] = useState("");
 
@@ -218,43 +218,43 @@ export default function Home() {
   const [step, setStep] = useState(1);
   const [URL, setURL] = useState();
 
+  function returnFlowerArr(){
+    let filler1,filler2;
+    if(fillers.length <= 0){
+      filler1 = 0
+      filler2 = 0
+    }
+    else if(fillers.length <= 1){
+      filler2 = 0
+    }
+    else {
+      filler1 = fillers[0]
+      filler2 = fillers[1]
+    }
+    return [filler1, filler2, foliage + 1, focal + 1];
+  }
+
+  //to preload the models
   useEffect(() => {
-    let chosenones = flowersSelectedPreview
+    let flwrA = returnFlowerArr()
+
     console.log("here")
-    useGLTF.preload(fillerNums[chosenones[0] - 1])
-    useGLTF.preload(fillerNums[chosenones[1] - 1])
-    useGLTF.preload(focalNums[chosenones[2] - 1])
-    useGLTF.preload(foliageNums[chosenones[3] - 1])
+    useGLTF.preload(fillerNums[flwrA[0] - 1 ])
+    useGLTF.preload(fillerNums[flwrA[1] - 1])
+    useGLTF.preload(focalNums[flwrA[2] - 1])
+    useGLTF.preload(foliageNums[flwrA[3] - 1])
     useGLTF.preload(vaseNums[vase + 1])
   
   }, [fillers,foliage,focal,vase])
+
+  //join the flowers order is filler, focal, foliage
   const URLGeneration = () => {
     const Content = [vase, flowersSelected.join('-'), note.join('-')]
     const ContentSpaced = Content.join('_')
     console.log(ContentSpaced)
     setStep(4)
     setURL(ContentSpaced)
-    URLDecoding(ContentSpaced)
     return ContentSpaced
-  }
-  const URLDecoding = (URL) => {
-    const Decoding_URL = URL.split('_')
-    //const vase_inputted = JSON.parse(parseInt(Decoding_URL[0]))
-    const vase_inputted = parseInt(Decoding_URL[0])
-
-    const flowersUnmapped = Decoding_URL[1].split("-").map(input => {
-      if(input.includes(",")) {
-        return ((input)).split(",").map(inputo => {
-          return (parseInt(inputo) + 1)
-        })
-      } else{
-        return ([parseInt(input) + 1, parseInt(input) + 1])
-      }
-    })
-
-    const messageEncoded = Decoding_URL[2].split('-').map(input => atob(input))
-    const CompleteDecode = [vase_inputted, flowersUnmapped, messageEncoded]
-    console.log(CompleteDecode)
   }
 
   return (
@@ -490,7 +490,7 @@ export default function Home() {
         <div className={styles.preview}>
         {step !== 3 ? 
         (
-          <Arrangement vaseNum={vase} chosenFlowerArr={flowersSelectedPreview}/>
+          <Arrangement vaseNum={vase} chosenFlowerArr={[fillers[0], fillers[1], focal, foliage]}/>
         ) : (<Card Gifter={noteGifter} Recipient={noteRecipient} Content={noteContent} Preview={"true"}></Card>)}
           </div>
       </main>
