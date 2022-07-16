@@ -23,7 +23,7 @@ import BrightPinkPeony from '../assets/FlowerThumbnails/Peony/BrightPink.png'
 import BrownPeony from '../assets/FlowerThumbnails/Peony/BrownPink.png'
 import CreamPeony from '../assets/FlowerThumbnails/Peony/Cream.png'
 import LightBluePeony from '../assets/FlowerThumbnails/Peony/LightBlue.png'
-import LinkPinkPeony from '../assets/FlowerThumbnails/Peony/LightPink.png'
+import LightPinkPeony from '../assets/FlowerThumbnails/Peony/LightPink.png'
 
 import Sunflower from '../assets/FlowerThumbnails/Sunflower/Sunflower.png'
 
@@ -98,12 +98,6 @@ export const FlowerList = [
       "Light Purple Spray Rose",
       "Flower Description",
       LightPurpleSprayRose
-    ],
-    [
-      7,
-      "Gyps",
-      "Flower Description",
-      Gyps
     ]
   ],
   [
@@ -175,7 +169,7 @@ export const FlowerList = [
       8,
       "Light Pink Peony",
       "Flower Description",
-      LinkPinkPeony
+      LightPinkPeony
     ],
     [
       9,
@@ -501,7 +495,7 @@ export default function Home() {
 
         {step !== 3 ? 
         (
-          <Arrangement vaseNum={vase} chosenFlowerArr={[fillers[0], fillers[1], focal, foliage]}/>
+          <Arrangement vaseNum={vase} chosenFlowerArr={[fillers[0] + 1, fillers[1] + 1, foliage + 1, focal + 1]}/>
         ) : (<Card Gifter={noteGifter} Recipient={noteRecipient} Content={noteContent} Preview={"true"}></Card>)}
           </div>
       </main>
