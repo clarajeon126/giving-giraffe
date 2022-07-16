@@ -19,4 +19,3 @@ export default function Peonybpink({ ...props }) {
   )
 }
 
-useGLTF.preload('/focal/peony/peonybpinkcp.glb')

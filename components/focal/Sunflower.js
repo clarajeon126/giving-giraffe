@@ -7,7 +7,7 @@ import { useGLTF } from '@react-three/drei'
 
 export default function Sunflower({ ...props }) {
   const group = useRef()
-  const { nodes, materials } = useGLTF('/focal/sunflower.gltf')
+  const { nodes, materials } = useGLTF('/focal/sunflowercp.glb')
   return (
     <group ref={group} {...props} dispose={null}>
       <group position={[0, 0, -0.02]} rotation={[-0.84, 0.17, -3.04]} scale={[0.17, 0.17, 0.13]}>
@@ -21,4 +21,3 @@ export default function Sunflower({ ...props }) {
   )
 }
 
-useGLTF.preload('/focal/sunflower.gltf')

@@ -19,4 +19,3 @@ export default function Peonyblue({ ...props }) {
   )
 }
 
-useGLTF.preload('/focal/peony/peonybluecp.glb')

@@ -18,4 +18,3 @@ export default function Rosepeach({ ...props }) {
   )
 }
 
-useGLTF.preload('/filler/rose/rosepeachcp.glb')

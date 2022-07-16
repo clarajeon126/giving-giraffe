@@ -19,4 +19,3 @@ export default function Gypsy({ ...props }) {
   )
 }
 
-useGLTF.preload('/filler/gypsycp.glb')

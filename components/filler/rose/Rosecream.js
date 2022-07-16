@@ -18,4 +18,3 @@ export default function Rosecream({ ...props }) {
   )
 }
 
-useGLTF.preload('/filler/rose/rosecreamcp.glb')

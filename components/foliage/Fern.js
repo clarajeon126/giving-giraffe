@@ -18,4 +18,3 @@ export default function Fern({ ...props }) {
   )
 }
 
-useGLTF.preload('/foliage/ferncp.glb')

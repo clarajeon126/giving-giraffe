@@ -19,4 +19,3 @@ export default function Peonymauve({ ...props }) {
   )
 }
 
-useGLTF.preload('/focal/peony/peonymauvecp.glb')

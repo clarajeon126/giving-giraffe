@@ -18,5 +18,3 @@ export default function Cosmospink({ ...props }) {
     </group>
   )
 }
-
-useGLTF.preload('/filler/cosmos/cosmospinkcp.glb')
