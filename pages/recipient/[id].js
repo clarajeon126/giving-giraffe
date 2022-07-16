@@ -95,7 +95,7 @@ export default function Recipient(props) {
             Giving Giraffe
             </h1>
             <p className={styles.cardClose} onClick={() => {setCardOpen(false)}}>Close Card</p>
-            <Card Gifter={gifterName} Recipient={recipientName} Content={noteText}></Card>
+            <Card Gifter={gifterName} Recipient={recipientName} Content={noteText} Preview={false}></Card>
             </div>
         )}
       </main> 

@@ -140,6 +140,7 @@ color: #392E26;
 }
 
 .preview {
+  overflow: hidden;
   width: 100%;
   margin-right: 64px;
   margin-left: 32px;
