@@ -6,7 +6,10 @@ import { Card } from '../../components/Card';
 import styles from '../../styles/recipient.module.css'
 import Image from 'next/image'
 import lettercover from "../../public/lettercover.png"
+
 import { useGLTF } from '@react-three/drei';
+import { Box } from '../../components/Box';
+
 export async function getServerSideProps(context) {
   const { id } = context.params;
 
@@ -87,8 +90,6 @@ export default function Recipient(props) {
 
   const [cardOpen, setCardOpen] = useState(false);
 
-
-
   useEffect(() => {
     console.log("useeffect was ran")
     // decode props
@@ -109,13 +110,15 @@ export default function Recipient(props) {
               <h1 className={styles.title}>
                 Giving Giraffe
               </h1>
-
               <h3 className={styles.botText}>
                 specially made for {recipientName}
               </h3>
-              <Arrangement chosenFlowerArr={chosenFlowers} vaseNum={vaseType}/>
 
-              <Image onClick={() => {setCardOpen(true)}} className={styles.letterImg} src={lettercover}/>
+              <Box className={styles.box} />
+              <Arrangement className={styles.argmt} chosenFlowerArr={chosenFlowers} vaseNum={vaseType}/>
+              <div className={styles.letterImg}>
+                <Image onClick={() => {setCardOpen(true)}}  src={lettercover}/>
+              </div>
         </div>)
         : 
         (

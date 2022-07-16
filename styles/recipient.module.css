@@ -1,3 +1,38 @@
+
+
+.container {
+    overflow: hidden;
+    /* display: flex;
+    flex-direction: column;
+    justify-content: center; */
+    width: 100vw;
+    height: 100vh;
+}
+.main {
+
+}
+
+.title {
+    position: absolute;
+    width: 100vw;
+    text-align: center;
+    font-family: 'GT-Maru';
+}
+
+.botText {
+    width: 100vw;
+    bottom: 0;
+    position: absolute;
+    text-align: center;
+    font-family: 'GT-Maru';
+}
+
+.letterImg {
+    position: absolute;
+    left: 20vw;
+    top: 20vh;
+    width: 20vw;
+}
 .container {
     overflow: hidden;
     /* display: flex;
@@ -97,4 +132,34 @@ margin-left: 32px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+}
+
+.box {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+}
+.boxMain {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: rgb(255, 255, 255);
+}
+
+.boxAnim {
+    width: 30vw;
+}
+
+.argmt {
+    position:absolute;
+    width: 100vw;
+    height: 100vh;
+}
+.noDisplay {
+    display: none;
+    width: 100vw;
+    height: 100vh;
 }
