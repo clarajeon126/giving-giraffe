@@ -523,7 +523,7 @@ export default function Home() {
 
         {step !== 3 ? 
         (
-          <Arrangement vaseNum={vase} chosenFlowerArr={[foliage + 1, fillers[0] + 1, fillers[1] + 1, focal + 1]}/>
+          <Arrangement vaseNum={vase} chosenFlowerArr={(fillers.length >= 2) ? [foliage + 1, fillers[0] + 1, fillers[1] + 1, focal + 1] : [foliage + 1, fillers[0] + 1, fillers[0] + 1, focal + 1]}/>
         ) : (<Card Gifter={noteGifter} Recipient={noteRecipient} Content={noteContent} Preview={"true"}></Card>)}
           </div>
       </main>
