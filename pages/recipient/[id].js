@@ -53,7 +53,6 @@ const URLDecoding = (URL) => {
   useGLTF.preload(foliageNums[chosenones[3] - 1])
   useGLTF.preload(vaseNums[vase_inputted + 1])
 
-
   console.log(CompleteDecode)
 
   return CompleteDecode
