@@ -6,9 +6,9 @@ import { Card } from '../../components/Card';
 import styles from '../../styles/recipient.module.css'
 import Image from 'next/image'
 import lettercover from "../../public/lettercover.png"
-import boxAnim from "../../public/boxanim.gif"
 
 import { useGLTF } from '@react-three/drei';
+import { Box } from '../../components/Box';
 
 export async function getServerSideProps(context) {
   const { id } = context.params;
@@ -110,14 +110,15 @@ export default function Recipient(props) {
               <h1 className={styles.title}>
                 Giving Giraffe
               </h1>
-
               <h3 className={styles.botText}>
                 specially made for {recipientName}
               </h3>
-              <Image src={boxAnim} />
-              <Arrangement style={{display: "none" }} chosenFlowerArr={chosenFlowers} vaseNum={vaseType}/>
+              <div className={styles.letterImg}>
+                <Image onClick={() => {setCardOpen(true)}}  src={lettercover}/>
+              </div>
+              <Box className={styles.box} />
+              <Arrangement className={styles.argmt} chosenFlowerArr={chosenFlowers} vaseNum={vaseType}/>
 
-              <Image onClick={() => {setCardOpen(true)}} className={styles.letterImg} src={lettercover}/>
         </div>)
         : 
         (

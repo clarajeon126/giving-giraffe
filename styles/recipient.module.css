@@ -2,9 +2,9 @@
     overflow: hidden;
     /* display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: center; */
     width: 100vw;
-    height: 100vh; */
+    height: 100vh;
 }
 .main {
 
@@ -26,10 +26,10 @@
 }
 
 .letterImg {
-    position: fixed;
     position: absolute;
     left: 20vw;
     top: 20vh;
+    width: 20vw;
 }
 
 
@@ -46,21 +46,6 @@
     align-items: center;
 }
 
-.cardpreview {
-    background-color: #FFDADA;
-    transform: rotate(-8deg);
-    margin-left: -128px;
-    margin-top: 64px;
-    padding: 16px;
-    margin-right: 16px;
-    height: 75vh;
-    width: 45vw;
-    justify-content: center;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
-
 .card p {
 font-style: normal;
 font-weight: 700;
@@ -70,13 +55,6 @@ margin-left: 32px;
 
 }
 
-.cardpreview p {
-    font-style: normal;
-    font-weight: 700;
-    font-size: 18px;
-    margin-left: 32px;
-    
-    }
 .cardClose {
     font-style: normal;
     font-weight: 700;
@@ -97,4 +75,34 @@ margin-left: 32px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+}
+
+.box {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+}
+.boxMain {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: rgb(255, 255, 255);
+}
+
+.boxAnim {
+    width: 30vw;
+}
+
+.argmt {
+    position:absolute;
+    width: 100vw;
+    height: 100vh;
+}
+.noDisplay {
+    display: none;
+    width: 100vw;
+    height: 100vh;
 }
