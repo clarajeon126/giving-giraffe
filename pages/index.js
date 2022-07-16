@@ -195,6 +195,8 @@ export default function Home() {
 
 
   const [vase, setVase] = useState(-1);
+  const [reloading, setReloading] = useState(false);
+
   const [copy, setCopy] = useState(false);
 
 
@@ -292,6 +294,10 @@ export default function Home() {
             
             <div onClick={() => {
               setVase(vaseArray[0])
+              setReloading(true)
+              setTimeout(function() {
+                setReloading(false)
+              }, 1);
               console.log(vase)
               }}>
               {vase !== i + 1 ? (
@@ -330,6 +336,10 @@ export default function Home() {
 
               
             <div className={styles.entireFlower} onClick={() => {
+              setReloading(true)
+              setTimeout(function() {
+                setReloading(false)
+              }, 1);
               //setFlowers(flowers.splice(layerIndex, 1, flowers[layerIndex].push(FlowerList[layerIndex][flowerIndex][0])))
               if (layerIndex == 0) {
                 if (fillers?.includes(flowerIndex)) {
@@ -488,9 +498,12 @@ export default function Home() {
         </div>) : null}
         </div>
         <div className={styles.preview}>
+
         {step !== 3 ? 
         (
-          <Arrangement vaseNum={vase} chosenFlowerArr={flowersSelectedPreview}/>
+          !reloading ? (
+            <Arrangement key={1} vaseNum={vase} chosenFlowerArr={flowersSelectedPreview}/>
+          ) : (null)
         ) : (<Card Gifter={noteGifter} Recipient={noteRecipient} Content={noteContent} Preview={"true"}></Card>)}
           </div>
       </main>
