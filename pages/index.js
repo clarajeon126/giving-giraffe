@@ -39,8 +39,8 @@ import LightPinkSprayRose from '../assets/FlowerThumbnails/SprayRose/LightPink.p
 import LightPurpleSprayRose from '../assets/FlowerThumbnails/SprayRose/LightPurple.png'
 
 export const VaseList = [
-  [1, "Red Vase", "Some call it early", OrangeVase],
-  [2, "White Vase", "Vase Subtext", WhiteVase],
+  [1, "White Vase", "Vase Subtext", WhiteVase],
+  [2, "Red Vase", "Some call it early", OrangeVase],
   [3, "Yellow Vase", "Vase Subtext", YellowVase]
   ];
 
@@ -190,6 +190,7 @@ export default function Home() {
   const [foliage, setFoliage] = useState(-1);
   const [focal, setFocal] = useState(-1);
   const flowersSelected = [fillers, foliage, focal];
+  const flowersSelectedPreview = [fillers[0], fillers[1], foliage, focal];
 
   const [noteGifter, setNoteGifter] = useState("");
 
@@ -467,7 +468,7 @@ export default function Home() {
         <div className={styles.preview}>
         {step !== 3 ? 
         (
-          <Arrangement vaseNum={vase} chosenFlowerArr={flowersSelected}/>
+          <Arrangement vaseNum={vase} chosenFlowerArr={flowersSelectedPreview}/>
         ) : (<Card Gifter={noteGifter} Recipient={noteRecipient} Content={noteContent} Preview={"true"}></Card>)}
           </div>
       </main>
