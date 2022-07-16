@@ -113,12 +113,12 @@ export default function Recipient(props) {
               <h3 className={styles.botText}>
                 specially made for {recipientName}
               </h3>
+
+              <Box className={styles.box} />
+              <Arrangement className={styles.argmt} chosenFlowerArr={chosenFlowers} vaseNum={vaseType}/>
               <div className={styles.letterImg}>
                 <Image onClick={() => {setCardOpen(true)}}  src={lettercover}/>
               </div>
-              <Box className={styles.box} />
-              <Arrangement className={styles.argmt} chosenFlowerArr={chosenFlowers} vaseNum={vaseType}/>
-
         </div>)
         : 
         (
