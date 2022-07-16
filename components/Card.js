@@ -23,9 +23,9 @@ export const Card = (props) => {
       <div className={styles.leftpanel}>
       </div>
       <div className={styles.rightpanel}>
-      <p>To: {props.Gifter}</p>
+      <p>To: {props.Recipient}</p>
       <p>{props.Content}</p>
-      <p>From: {props.Recipient}</p>
+      <p>From: {props.Gifter}</p>
       </div>
       </div>
       ) }
