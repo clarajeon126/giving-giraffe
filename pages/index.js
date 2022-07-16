@@ -147,12 +147,13 @@ export const FlowerList = [
 export default function Home() {
 
 
-  const [vase, setVase] = useState([]);
+  const [vase, setVase] = useState(-1);
+  const [copy, setCopy] = useState(false);
 
 
   const [fillers, setFillers] = useState([]);
-  const [foliage, setFoliage] = useState([]);
-  const [focal, setFocal] = useState([]);
+  const [foliage, setFoliage] = useState(-1);
+  const [focal, setFocal] = useState(-1);
   const flowersSelected = [fillers, foliage, focal];
 
   const [noteGifter, setNoteGifter] = useState("");
@@ -185,9 +186,11 @@ export default function Home() {
 
     const flowersUnmapped = Decoding_URL[1].split("-").map(input => {
       if(input.includes(",")) {
-        return input.split(",")
+        return ((input)).split(",").map(inputo => {
+          return (parseInt(inputo) + 1)
+        })
       } else{
-        return input
+        return ([parseInt(input) + 1, parseInt(input) + 1])
       }
     })
 
@@ -206,7 +209,9 @@ export default function Home() {
 
       <main className={styles.main}>
         <div>
-        <div className={styles.branding}>
+        <div className={styles.branding} onClick={() => { 
+          setStep(1)
+        }}>
         <h1 className={styles.title}>
           Giving Giraffe
         </h1>
@@ -264,7 +269,7 @@ export default function Home() {
             <div className={styles.entireFlower} onClick={() => {
               //setFlowers(flowers.splice(layerIndex, 1, flowers[layerIndex].push(FlowerList[layerIndex][flowerIndex][0])))
               if (layerIndex == 0) {
-                if (fillers.includes(flowerIndex)) {
+                if (fillers?.includes(flowerIndex)) {
                   setFillers(fillers.filter(indexOfFlower => indexOfFlower != flowerIndex))
                 } else if (fillers.length < 2) {
                   setFillers(oldArray => [...oldArray, flowerIndex])
@@ -336,18 +341,18 @@ export default function Home() {
                   Optionally you can add a note to your gift
                 </p>
                 <div>
-                  <input type="checkbox" 
+                  <input className={styles.checkbox} type="checkbox" 
                   defaultChecked={noteChoice}
                   onChange={() => setNoteChoice(!noteChoice)}
                   ></input>
-                  <label>I would like to include a note</label>
+                  <label className={styles.checkLabel}>I would like to include a note</label>
                 </div>
                 
                 {noteChoice ? (
+                  <div className={styles.entirenote}>
                   <div>
-                  <div>
-                  <label for="fname">Their Name:</label>
-                  <input onChange={(e) => {setNoteRecipient(btoa(e.target.value))
+                  <label className={styles.inputLabel} for="fname">To: </label>
+                  <input className={styles.ToInput}  onChange={(e) => {setNoteRecipient(btoa(e.target.value))
                   console.log(atob(noteRecipient))}}
                   type="text" id="fname" name="fname"></input>
                   </div>
@@ -361,8 +366,8 @@ export default function Home() {
                   </textarea>
                   </div>
                   <div>
-                  <label for="fname">Your Name: </label>
-                  <input onChange={(e) => {setNoteGifter(btoa(e.target.value))
+                  <label className={styles.inputLabel} for="fname">From: </label>
+                  <input className={styles.FromInput} onChange={(e) => {setNoteGifter(btoa(e.target.value))
                   console.log(atob(noteGifter))}}
                   type="text" id="fname" name="fname"></input>
                   </div>
@@ -382,27 +387,38 @@ export default function Home() {
         <div className={styles.information}>
           
           
-          <h2>Thank you for gifting with Giving Giraffe</h2>
+          <h2 className={styles.stepHeading}>Thank you for gifting with Giving Giraffe</h2>
 
-          <p> 
-            Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.
+          <p className={styles.stepParagraph}> 
+            We're delighted that you took the time to create a gift for someone using our tool. We hope your recipient appreciates your efforts as much as we do. 
           </p>
-
-          http://GivingGiraffe.com/{URL}
+          <div className={styles.linkHolder} onClick={ () => {
+            navigator.clipboard.writeText("http://GivingGiraffe.com/" + URL)
+            setCopy(true)
+        }}>
+          <text className={styles.link}>http://GivingGiraffe.com/{URL}</text>
+          {!copy ? (          
+          <p className={styles.selectedLabel}>Click to copy link to clipboard</p>) :       (<p className={styles.selectedLabel}>Copied to Clipboard</p>)}
+          </div>
         </div>
         </div>) : null
           }
 
-        <div className={styles.navigation}>
+        {step !== 4 ? 
+        (<div className={styles.navigation}>
           {step !== 1 ? 
           (<button className={styles.Button} onClick={ () => setStep(step - 1) }>Previous</button>) : 
-          (<button className={styles.Button} onClick={ () => setStep(step) }>Previous</button>)
+          (<button className={styles.ButtonOff} onClick={ () => setStep(step) }>Previous</button>)
           }
           {step !== 3 ? 
-          (<button className={styles.Button} onClick={ () => setStep(step + 1) }>Next</button>) : 
+          (
+          ((step == 1) && (vase !== -1)) || (step == 2) && foliage !== -1 && fillers !== -1 && focal !== -1 ? 
+          (<button className={styles.Button} onClick={ () => setStep(step + 1) }>Next</button>) :
+          (<button className={styles.ButtonOff} onClick={ () => setStep(step) }>Next</button>)
+          ) : 
           (<button className={styles.ButtonComplete} onClick={ () => URLGeneration() }>Generate Gift</button>)
           }
-        </div>
+        </div>) : null}
         </div>
         <div className={styles.preview}>
         </div>
