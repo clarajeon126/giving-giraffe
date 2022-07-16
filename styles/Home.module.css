@@ -1,5 +1,5 @@
 .branding .title {
-  font-family: 'GT Maru Trial';
+  font-family: 'GT-Maru';
   font-style: normal;
   font-weight: 700;
   font-size: 68px;
@@ -38,7 +38,8 @@ color: #392E26;
   margin-left: 64px;
   padding: 32px;
   width: calc(50vw - 32px);
-  height: fit-content;
+  max-height: 545px;
+  overflow: scroll;
 }
 
 .information {
@@ -62,6 +63,7 @@ color: #392E26;
 .stepHeading {
   margin-top: 0px;
   margin-bottom: 16px;
+  color: #241F1C
 }
 
 .stepParagraph {
@@ -276,4 +278,112 @@ color: #392E26;
   margin-top: 0px;
   
   height: fit-content;
+}
+
+.checkbox:focus
+{
+    outline: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.checkbox
+{
+    background-color: #BA9E86;
+    border-radius: 2px;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 17px;
+    height: 17px;
+    cursor: pointer;
+    position: relative;
+    top: 5px;
+}
+
+.checkbox:checked
+{
+    background-color: #7A4323;
+    background: #7A4323 url("data:image/gif;base64,R0lGODlhCwAKAIABAP////3cnSH5BAEKAAEALAAAAAALAAoAAAIUjH+AC73WHIsw0UCjglraO20PNhYAOw==") 3px 3px no-repeat;
+
+}
+
+.checkLabel {
+  color: #7A4323;
+  margin-left: 8px;
+}
+
+.inputLabel {
+  font-style: normal;
+font-weight: 400;
+font-size: 21px;
+line-height: 25px;
+width: 24px;
+height: 73px;  
+padding-left: 24px;
+/* Black/Important */
+height: 74px;
+color: #241F1C;
+background-color: #FBF8E8;
+}
+
+.entirenote {
+  border-radius: 12px;
+  border: 1px solid #7A4323;
+  margin-top: 24px;
+}
+
+.ToInput {
+  resize: none;
+  width: calc(100% - 64px);
+  font-style: normal;
+  font-weight: 400;
+  font-size: 21px;
+  line-height: 25px;
+  font-family: 'GT-Maru';
+  padding: 24px;
+  background-color: #FBF8E8;
+  border: none;
+  border-radius: 12px;
+}
+
+.FromInput {
+  resize: none;
+  width: calc(100% - 98px);
+  font-style: normal;
+  font-weight: 400;
+  font-size: 21px;
+  line-height: 25px;
+  font-family: 'GT-Maru';
+  padding: 24px;
+  background-color: #FBF8E8;
+  border: none;
+  border-radius: 12px;
+}
+
+
+
+.linkHolder {
+  background: #FFEF9C;
+border-radius: 16px;
+font-style: normal;
+font-weight: 400;
+font-size: 24px;
+line-height: 32px;
+text-decoration-line: none;
+
+/* Brown */
+
+color: #7A4323;
+padding: 24px;
+cursor: copy;
+}
+
+.link {
+  text-decoration: underline;
+}
+
+.linkHolder p {
+  margin-top: 16px;
+  text-decoration: none;
+  text-decoration-line: none;
+
 }
