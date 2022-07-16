@@ -65,6 +65,26 @@ export const FlowerList = [
   [
     [
       1,
+      "Silver Dollar Eucalyptus",
+      "Flower Description",
+      SilverDollarEucalyptus
+    ],
+    [
+      2,
+      "Dusty Miller",
+      "Flower Description",
+      DustyMiller
+    ],
+    [
+      3,
+      "Leatherleaf Fern",
+      "Flower Description",
+      LeatherLeafFern
+    ]
+  ],  
+  [
+    [
+      1,
       "Light Pink Cosmos",
       "Flower Description",
       LightPinkCosmos
@@ -98,26 +118,6 @@ export const FlowerList = [
       "Light Purple Spray Rose",
       "Flower Description",
       LightPurpleSprayRose
-    ]
-  ],
-  [
-    [
-      1,
-      "Silver Dollar Eucalyptus",
-      "Flower Description",
-      SilverDollarEucalyptus
-    ],
-    [
-      2,
-      "Dusty Miller",
-      "Flower Description",
-      DustyMiller
-    ],
-    [
-      3,
-      "Leatherleaf Fern",
-      "Flower Description",
-      LeatherLeafFern
     ]
   ],
   [
@@ -197,8 +197,7 @@ export default function Home() {
   const [fillers, setFillers] = useState([]);
   const [foliage, setFoliage] = useState(-1);
   const [focal, setFocal] = useState(-1);
-  const flowersSelected = [fillers, foliage, focal];
-  const [selectedFlowers, setSelectedFlowers] = useState([0,0,0,0])
+  const flowersSelected = [foliage, fillers, focal];
 
   const [noteGifter, setNoteGifter] = useState("");
 
@@ -335,7 +334,7 @@ export default function Home() {
                 setReloading(false)
               }, 1);
               //setFlowers(flowers.splice(layerIndex, 1, flowers[layerIndex].push(FlowerList[layerIndex][flowerIndex][0])))
-              if (layerIndex == 0) {
+              if (layerIndex == 1) {
                 if (fillers?.includes(flowerIndex)) {
                   setFillers(fillers.filter(indexOfFlower => indexOfFlower != flowerIndex))
                 } else if (fillers.length < 2) {
@@ -347,7 +346,7 @@ export default function Home() {
 
                 //setFillers(flowerIndex)
                 console.log(flowersSelected)
-              } else if (layerIndex == 1) {
+              } else if (layerIndex == 0) {
                 
                 //setFoliage(oldArray => [...oldArray, flowerIndex])
                 setFoliage(flowerIndex)
@@ -358,12 +357,12 @@ export default function Home() {
                 console.log(flowersSelected)
               }
               }}>
-                {(layerIndex == 0 && fillers.includes(flowerIndex)) || (layerIndex == 1 && foliage == flowerIndex) || (layerIndex == 2 && focal == flowerIndex) ? 
+                {(layerIndex == 1 && fillers.includes(flowerIndex)) || (layerIndex == 0 && foliage == flowerIndex) || (layerIndex == 2 && focal == flowerIndex) ? 
               (
               <div>
-               {(layerIndex == 0 && flowerIndex == 0) ? (<p className={styles.flowerLabel}>Fillers</p>) : 
+               {(layerIndex == 0 && flowerIndex == 0) ? (<p className={styles.flowerLabel}>Foliage</p>) : 
                 (null)}
-                {(layerIndex == 1 && flowerIndex == 0) ? (<p className={styles.flowerLabel}>Foliage</p>) : 
+                {(layerIndex == 1 && flowerIndex == 0) ? (<p className={styles.flowerLabel}>Fillers</p>) : 
                 (null)}
                 {(layerIndex == 2 && flowerIndex == 0) ? (<p className={styles.flowerLabel}>Focal</p>) : 
                 (null)}
@@ -378,9 +377,9 @@ export default function Home() {
               ) :
               (
               <div>
-                {(layerIndex == 0 && flowerIndex == 0) ? (<p className={styles.flowerLabel}>Fillers</p>) : 
+                {(layerIndex == 0 && flowerIndex == 0) ? (<p className={styles.flowerLabel}>Foliage</p>) : 
                 (null)}
-                {(layerIndex == 1 && flowerIndex == 0) ? (<p className={styles.flowerLabel}>Foliage</p>) : 
+                {(layerIndex == 1 && flowerIndex == 0) ? (<p className={styles.flowerLabel}>Fillers</p>) : 
                 (null)}
                 {(layerIndex == 2 && flowerIndex == 0) ? (<p className={styles.flowerLabel}>Focal</p>) : 
                 (null)}
