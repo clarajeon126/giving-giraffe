@@ -185,3 +185,15 @@ margin-left: 32px;
     justify-content: center;
     align-items: center;
 }
+
+
+.previewLetter {
+    background-image: url("../public/card.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 90vh;
+    width: calc(90vh * 1.44);
+    transform: scale(0.9) rotate(-5deg);
+    margin-left: -70vw;
+  }

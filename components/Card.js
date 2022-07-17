@@ -7,7 +7,7 @@ export const Card = (props) => {
   const PreviewTest = props.Preview
   return (
     <div className={styles.centered}>
-        <div className={styles.cardImg}>
+        <div className={PreviewTest ? styles.previewLetter : styles.cardImg} >
           {PreviewTest ?
           (<div className={styles.rightpanel}>
               <p className={styles.textWrap}>To: {atob(props.Recipient)}</p>
