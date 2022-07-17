@@ -565,6 +565,16 @@ cursor: copy;
     width: 64px;
     border-radius: 16px;    
   }
+  .ButtonPreviewB {
+    background-color: #7A4323;
+    color: inherit;
+    border: none;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+    width: 64px;
+    border-radius: 16px;    
+  }
   
   .navigation {
     margin-top: 24px;
@@ -589,5 +599,9 @@ cursor: copy;
     margin-right: 16px;
     border-radius: 16px;
     
+  }
+
+  .vaseItemMobile {
+    height: 100%;
   }
 }
