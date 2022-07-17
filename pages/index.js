@@ -279,14 +279,28 @@ export default function Home() {
         <meta name="msapplication-TileImage" content="/ms-icon-144x144.png" />
         <meta name="theme-color" content="#ffffff" />
       </Head>
-{/* 
-      {isTabletOrMobile ? (
-    <div>
-      <p>ok</p>
-    </div>
-      ) : ( undefined )}
+ 
 
- */}
+      <main className={styles.mobileMain}>
+        <h1 className={styles.brandName}>Giving Giraffe</h1>
+        <div className={styles.mobileStep}>
+          <p className={styles.mobileStepBreadCrumb}>Step {step == 1 ? ("One") : (step == 2 ? ("Two") : (step == 3 ? ("Three") : ("Complete")))}</p>
+          <h2 className={styles.mobileStepHeading}>{step == 1 ? ("Select a vase") : (step == 2 ? ("Select Flowers") : (step == 3 ? ("Write a note") : ("Thank you")))}</h2>
+          <p className={styles.mobileDescription}>{step == 1 ? ("The vase is an important often overlooked component of the flowering arrangement process. Be sure to choose wisely for the wrong vase may convey the wrong message.") : (step == 2 ? ("Select the flowers for your gift") : (step == 3 ? ("Optionally you can add a note") : ("We're delighted that you took the time to create a gift for someone using our tool. We hope your recipient appreciates your efforts as much as we do.")))}</p>
+          <div className={styles.mobileStepContent}>
+          {step == 1 ? (
+            "Select Vase"
+            ) : (step == 2 ? (
+            "Customize Flowers"
+            ) :
+            (step == 3 ? 
+            ("Write Note Here")
+            :
+            ("Link")
+            ))}
+          </div>
+        </div>
+      </main>
 
 
       <main className={styles.main}>
@@ -492,10 +506,10 @@ export default function Home() {
             We're delighted that you took the time to create a gift for someone using our tool. We hope your recipient appreciates your efforts as much as we do. 
           </p>
           <div className={styles.linkHolder} onClick={ () => {
-            navigator.clipboard.writeText("http://GivingGiraffe.com/" + URL)
+            navigator.clipboard.writeText("http://GivingGiraffe.co/Recipient/" + URL)
             setCopy(true)
         }}>
-          <text className={styles.link}>http://GivingGiraffe.com/{URL}</text>
+          <text className={styles.link}>http://GivingGiraffe.co/Recipient/{URL}</text>
           {!copy ? (          
           <p className={styles.selectedLabel}>Click to copy link to clipboard</p>) :       (<p className={styles.selectedLabel}>Copied to Clipboard</p>)}
           </div>
