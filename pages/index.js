@@ -15,8 +15,12 @@ import { Card } from '../components/Card';
 //vase
 import OrangeVase from '../public/FlowerThumbnails/Vases/OrangeVase.png'
 import WhiteVase from '../public/FlowerThumbnails/Vases/WhiteVase.png'
+<<<<<<< HEAD
 import YellowVase from '../public/FlowerThumbnails/Vases/YellowVase.png'
 import BlueVase from '../public/FlowerThumbnails/Vases/BlueVase.png'
+=======
+import YellowVase from '../public/FlowerThumbnails/Vases/BlueVase.png'
+>>>>>>> b238373bc370693e7c38462ac29ce8f0986e927f
 
 //focal
 import DarkPurpleAnemone from '../public/FlowerThumbnails/Anemone/darkpurple.png'
@@ -130,6 +134,12 @@ export const FlowerList = [
       "Light Purple Spray Rose",
       "Flower Description",
       LightPurpleSprayRose
+    ],
+    [
+      8,
+      "Gypsy",
+      "Flower Description",
+      Gyps
     ]
   ],
   [
