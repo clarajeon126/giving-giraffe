@@ -442,18 +442,18 @@ export default function Home() {
               (<div className={styles.linkHolder} onClick={ () => {
                 navigator.share({
                   title: "a gift",
-                  url: ("http://GivingGiraffe.co/Recipient/" + URL)
+                  url: ("http://GivingGiraffe.xyz/Recipient/" + URL)
                 })
             }}>
-              <text className={styles.link}>http://GivingGiraffe.co/Recipient/{URL}</text>
+              <text className={styles.link}>http://GivingGiraffe.xyz/Recipient/{URL}</text>
               {!copy ? (          
               <p className={styles.selectedLabel}>Share</p>) :       (<p className={styles.selectedLabel}>Shared</p>)}
               </div>) : (
                 <div className={styles.linkHolder} onClick={ () => {
-                  navigator.clipboard.writeText("http://GivingGiraffe.co/Recipient/" + URL)
+                  navigator.clipboard.writeText("http://GivingGiraffe.xyz/Recipient/" + URL)
                   setCopy(true)
               }}>
-                <text className={styles.link}>http://GivingGiraffe.co/Recipient/{URL}</text>
+                <text className={styles.link}>http://GivingGiraffe.xyz/Recipient/{URL}</text>
                 {!copy ? (          
                 <p className={styles.selectedLabel}>Copy</p>) :       (<p className={styles.selectedLabel}>Copied to Clipboard</p>)}
                 </div>
