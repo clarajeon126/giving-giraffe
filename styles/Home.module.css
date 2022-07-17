@@ -654,4 +654,21 @@ cursor: copy;
     overflow: hidden;
     margin-right: 12px;
   }
+
+  .linkHolder {
+    background: #FFEF9C;
+  border-radius: 16px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  word-wrap:break-word;
+  text-decoration-line: none;
+  
+  /* Brown */
+  
+  color: #7A4323;
+  padding: 24px;
+  cursor: copy;
+  }
 }

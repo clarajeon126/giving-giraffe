@@ -329,7 +329,7 @@ export default function Home() {
                 
                ))
               }
-              <p className={styles.FlowerHeaderSizeMobile}>Fillers</p>
+              <p className={styles.FlowerHeaderSizeMobile}>Fillers (two)</p>
               {FlowerList && FlowerList[1].map((flower, position_index) => (
                 fillers.includes(position_index) ? (
                   <div className={styles.flowerMobileSelected} onClick={ () => 
@@ -437,12 +437,37 @@ export default function Home() {
               
             )
             :
-            ("Link")
+            (
+              navigator.share ?
+              (<div className={styles.linkHolder} onClick={ () => {
+                navigator.share({
+                  title: "a gift",
+                  url: ("http://GivingGiraffe.co/Recipient/" + URL)
+                })
+            }}>
+              <text className={styles.link}>http://GivingGiraffe.co/Recipient/{URL}</text>
+              {!copy ? (          
+              <p className={styles.selectedLabel}>Share</p>) :       (<p className={styles.selectedLabel}>Shared</p>)}
+              </div>) : (
+                <div className={styles.linkHolder} onClick={ () => {
+                  navigator.clipboard.writeText("http://GivingGiraffe.co/Recipient/" + URL)
+                  setCopy(true)
+              }}>
+                <text className={styles.link}>http://GivingGiraffe.co/Recipient/{URL}</text>
+                {!copy ? (          
+                <p className={styles.selectedLabel}>Copy</p>) :       (<p className={styles.selectedLabel}>Copied to Clipboard</p>)}
+                </div>
+              )
+    
+            )
             ))}
           </div> 
         </div>): (
           <div className={styles.mobilePreview}>
-            <Arrangement vaseNum={vase} chosenFlowerArr={(fillers.length >= 2) ? [foliage + 1, fillers[0] + 1, fillers[1] + 1, focal + 1] : [foliage + 1, fillers[0] + 1, fillers[0] + 1, focal + 1]}/>
+        {step !== 3 ? 
+        (
+          <Arrangement vaseNum={vase} chosenFlowerArr={(fillers.length >= 2) ? [foliage + 1, fillers[0] + 1, fillers[1] + 1, focal + 1] : [foliage + 1, fillers[0] + 1, fillers[0] + 1, focal + 1]}/>
+        ) : (<Card Gifter={noteGifter} Recipient={noteRecipient} Content={noteContent} Preview={"true"}></Card>)}
           </div>
         )}
         {step !== 4 ? 
