@@ -43,7 +43,7 @@ import Gyps from '../public/FlowerThumbnails/Gyps/Gyps.png'
 //fern
 import SilverDollarEucalyptus from '../public/FlowerThumbnails/SilverDollarEucalyptus/Straight.png'
 import DustyMiller from '../public/FlowerThumbnails/DustyMiller/DustyMiller.png'
-import LeatherLeafFern from '../public/FlowerThumbnails/LeatherLeafFern/leatherleaffern.png'
+import LeatherLeafFern from '../public/FlowerThumbnails/LeatherleafFern/leatherleaffern.png'
 
 //names for the 3d models to import separately
 let foliageNums = ["/foliage/silverscp.glb", "/foliage/dustycp.glb", "/foliage/ferncp.glb"]
