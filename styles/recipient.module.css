@@ -30,6 +30,10 @@
     font-family: 'GT-Maru';
     z-index: 200;
 }
+.title {
+    width: 100%;
+    text-align: center;
+}
 
 .botText {
     width: 100vw;

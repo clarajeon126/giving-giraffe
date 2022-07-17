@@ -2,6 +2,7 @@ import { Html, Image, OrbitControls, Text } from '@react-three/drei';
 import { Canvas, extend, useLoader, useThree, Dom } from '@react-three/fiber';
 import React, { Suspense, useEffect, useState } from 'react'
 import { AxesHelper, PlaneBufferGeometry, TextureLoader } from 'three';
+import styles from '../styles/recipient.module.css'
 
 import img from '../public/spinner.gif'
 
@@ -284,9 +285,10 @@ export const Arrangement = (props) => {
 
 const Fallback = () => (
   <Html>
-    <div>Loading...</div>
+    <div className={styles.title}>Loading...</div>
   </Html>
 )
+
 
   return (
     <Canvas style={canvasStyle} camera={{ fov: 75, position: [0, 0, 35] }}>
@@ -299,7 +301,6 @@ const Fallback = () => (
         {filler1Coords.map(filler1Thing)}
         {filler2Coords.map(filler2Thing)}
         {focalCoords.map(focalCreator)}
-
       </Suspense>
       <OrbitControls enableZoom={false}/>
     </Canvas>

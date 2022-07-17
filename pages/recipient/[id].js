@@ -102,7 +102,7 @@ export default function Recipient(props) {
     setGiftClicked(true)
     setTimeout(() => {
       setConfOn(true)
-    }, 500);
+    }, 1000);
   }
   const config = {
     angle: "90",
