@@ -129,6 +129,12 @@ export const FlowerList = [
       "Light Purple Spray Rose",
       "Flower Description",
       LightPurpleSprayRose
+    ],
+    [
+      8,
+      "Gypsy",
+      "Flower Description",
+      Gyps
     ]
   ],
   [
