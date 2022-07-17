@@ -291,7 +291,7 @@ export default function Home() {
         <div className={styles.mobileStep}>
           <p className={styles.mobileStepBreadCrumb}>Step {step == 1 ? ("One") : (step == 2 ? ("Two") : (step == 3 ? ("Three") : ("Complete")))}</p>
           <h2 className={styles.mobileStepHeading}>{step == 1 ? ("Select a vase") : (step == 2 ? ("Select Flowers") : (step == 3 ? ("Write a note") : ("Thank you")))}</h2>
-          <p className={styles.mobileDescription}>{step == 1 ? ("The vase is an important often overlooked component of the flowering arrangement process. Be sure to choose wisely for the wrong vase may convey the wrong message.") : (step == 2 ? ("Select the flowers for your gift") : (step == 3 ? ("Optionally you can add a note") : ("We're delighted that you took the time to create a gift for someone using our tool. We hope your recipient appreciates your efforts as much as we do.")))}</p>
+          <p className={styles.mobileDescription}>{step == 1 ? ("To create the perfect flower bouquet gift, start with the vase") : (step == 2 ? ("Select the flowers for your gift") : (step == 3 ? ("Optionally you can add a note") : ("We're delighted that you took the time to create a gift for someone using our tool. We hope your recipient appreciates your efforts as much as we do.")))}</p>
           <div className={styles.mobileStepContent}>
           {step == 1 ? (
             <div className={styles.mobileVaseListContainer}>
@@ -501,7 +501,12 @@ export default function Home() {
                 <div>
                   <input className={styles.checkbox} type="checkbox" 
                   defaultChecked={noteChoice}
-                  onChange={() => setNoteChoice(!noteChoice)}
+                  onChange={() => {
+                    setNoteChoice(!noteChoice)
+                    setNoteContent("")
+                    setNoteRecipient("")
+                    setNoteGifter("")
+                  }}
                   ></input>
                   <label className={styles.checkLabel}>I would like to include a note</label>
                 </div>

@@ -603,5 +603,14 @@ cursor: copy;
 
   .vaseItemMobile {
     height: 100%;
+    width: calc(75%);
+    background-color: #7A4323;
+    border-radius: 12px;
+  }
+  .mobileVaseListContainer {
+    display: flex;
+    width: fit-content;
+    flex-direction: row;
+    overflow: scroll;
   }
 }
