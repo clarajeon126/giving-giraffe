@@ -468,5 +468,8 @@ cursor: copy;
     height: calc(100vh - 192px);
     background: #FBF8E8;
     overflow: scroll;
+    margin-left: 16px;
+    margin-right: 16px;
+    padding: 16px;
   }
 }

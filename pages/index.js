@@ -10,40 +10,40 @@ import { Arrangement } from '../components/Arrangement';
 import { Card } from '../components/Card';
 
 //vase
-import OrangeVase from '/FlowerThumbnails/Vases/OrangeVase.png'
-import WhiteVase from '/FlowerThumbnails/Vases/WhiteVase.png'
-import YellowVase from '/FlowerThumbnails/Vases/YellowVase.png'
+import OrangeVase from '../public/FlowerThumbnails/Vases/OrangeVase.png'
+import WhiteVase from '../public/FlowerThumbnails/Vases/WhiteVase.png'
+import YellowVase from '../public/FlowerThumbnails/Vases/YellowVase.png'
 
 //focal
-import DarkPurpleAnemone from '/FlowerThumbnails/Anemone/darkpurple.png'
-import LightPinkAnemone from '/FlowerThumbnails/Anemone/lightpink.png'
-import OrangeAnemone from '/FlowerThumbnails/Anemone/orange.png'
-import WhiteAnemone from '/FlowerThumbnails/Anemone/white.png'
+import DarkPurpleAnemone from '../public/FlowerThumbnails/Anemone/darkpurple.png'
+import LightPinkAnemone from '../public/FlowerThumbnails/Anemone/lightpink.png'
+import OrangeAnemone from '../public/FlowerThumbnails/Anemone/orange.png'
+import WhiteAnemone from '../public/FlowerThumbnails/Anemone/white.png'
 
-import BrightPinkPeony from '/FlowerThumbnails/Peony/BrightPink.png'
-import BrownPeony from '/FlowerThumbnails/Peony/BrownPink.png'
-import CreamPeony from '/FlowerThumbnails/Peony/Cream.png'
-import LightBluePeony from '/FlowerThumbnails/Peony/LightBlue.png'
-import LightPinkPeony from '/FlowerThumbnails/Peony/LightPink.png'
+import BrightPinkPeony from '../public/FlowerThumbnails/Peony/BrightPink.png'
+import BrownPeony from '../public/FlowerThumbnails/Peony/BrownPink.png'
+import CreamPeony from '../public/FlowerThumbnails/Peony/Cream.png'
+import LightBluePeony from '../public/FlowerThumbnails/Peony/LightBlue.png'
+import LightPinkPeony from '../public/FlowerThumbnails/Peony/LightPink.png'
 
-import Sunflower from '/FlowerThumbnails/Sunflower/Sunflower.png'
+import Sunflower from '../public/FlowerThumbnails/Sunflower/Sunflower.png'
 
 //filler
-import LightPinkCosmos from '/FlowerThumbnails/Cosmos/lightpink.png'
-import LightPurpleCosmos from '/FlowerThumbnails/Cosmos/lightpurple.png'
-import WhiteYellowCosmos from '/FlowerThumbnails/Cosmos/whiteyellow.png'
+import LightPinkCosmos from '../public/FlowerThumbnails/Cosmos/lightpink.png'
+import LightPurpleCosmos from '../public/FlowerThumbnails/Cosmos/lightpurple.png'
+import WhiteYellowCosmos from '../public/FlowerThumbnails/Cosmos/whiteyellow.png'
 
-import CreamSprayRose from '/FlowerThumbnails/SprayRose/Cream.png'
-import LightPeachSprayRose from '/FlowerThumbnails/SprayRose/LightPeach.png'
-import LightPinkSprayRose from '/FlowerThumbnails/SprayRose/LightPink.png'
-import LightPurpleSprayRose from '/FlowerThumbnails/SprayRose/LightPurple.png'
+import CreamSprayRose from '../public/FlowerThumbnails/SprayRose/Cream.png'
+import LightPeachSprayRose from '../public/FlowerThumbnails/SprayRose/LightPeach.png'
+import LightPinkSprayRose from '../public/FlowerThumbnails/SprayRose/LightPink.png'
+import LightPurpleSprayRose from '../public/FlowerThumbnails/SprayRose/LightPurple.png'
 
-import Gyps from '/FlowerThumbnails/Gyps/Gyps.png'
+import Gyps from '../public/FlowerThumbnails/Gyps/Gyps.png'
 
 //fern
-import SilverDollarEucalyptus from '/FlowerThumbnails/SilverDollarEucalyptus/Straight.png'
-import DustyMiller from '/FlowerThumbnails/DustyMiller/DustyMiller.png'
-import LeatherLeafFern from '/FlowerThumbnails/LeatherLeafFern/leatherleaffern.png'
+import SilverDollarEucalyptus from '../public/FlowerThumbnails/SilverDollarEucalyptus/Straight.png'
+import DustyMiller from '../public/FlowerThumbnails/DustyMiller/DustyMiller.png'
+import LeatherLeafFern from '../public/FlowerThumbnails/LeatherLeafFern/leatherleaffern.png'
 
 //names for the 3d models to import separately
 let foliageNums = ["/foliage/silverscp.glb", "/foliage/dustycp.glb", "/foliage/ferncp.glb"]
