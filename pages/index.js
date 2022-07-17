@@ -485,10 +485,15 @@ export default function Home() {
           {step !== 3 ? 
           (
           ((step == 1) && (vase !== -1)) || (step == 2) && foliage !== -1 && fillers !== -1 && focal !== -1 ? 
-          (<button className={styles.Button} onClick={ () => setStep(step + 1) }><strong className={styles.buttonText}>Next</strong></button>) :
-          (<button className={styles.ButtonOff} onClick={ () => setStep(step) }><strong className={styles.buttonText}>Next</strong></button>)
+          (<button className={styles.Button} onClick={ () => {
+            setStep(step + 1)
+            setpreviewMode(false)
+          } }><strong className={styles.buttonText}>Next</strong></button>) :
+          (<button className={styles.ButtonOff} onClick={ () => {setStep(step)
+            setpreviewMode(false)} }><strong className={styles.buttonText}>Next</strong></button>)
           ) : 
-          (<button className={styles.ButtonComplete} onClick={ () => URLGeneration() }><strong className={styles.buttonText}>Get Gift</strong></button>)
+          (<button className={styles.ButtonComplete} onClick={ () => {URLGeneration()
+            setpreviewMode(false)} }><strong className={styles.buttonText}>Get Gift</strong></button>)
           }
         </div>) : null}
       </main>
