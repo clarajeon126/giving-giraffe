@@ -8,6 +8,7 @@ import ReactHowler from 'react-howler'
 import styles from '../../styles/recipient.module.css'
 import Image from 'next/image'
 import lettercover from "../../public/lettercover.png"
+import { useRouter } from "next/router";
 
 import { useGLTF } from '@react-three/drei';
 import { Box } from '../../components/Box';
@@ -61,6 +62,8 @@ const URLDecoding = (URL) => {
 }
 
 export default function Recipient(props) {
+  const router = useRouter();
+
   const URLDecoding = (URL) => {
     const Decoding_URL = URL.split('_')
     const vase_inputted = parseInt(Decoding_URL[0])
@@ -150,6 +153,11 @@ export default function Recipient(props) {
               </h1>
               <h3 className={styles.botText}>
                 specially made for {recipientName != "" ? recipientName : "you"}
+              </h3>
+              <h3 onClick={() => {
+                router.push("/")
+              }} className={styles.CreateText}>
+                create a gift
               </h3>
               <h3 className={giftClicked ? styles.soundText : styles.noDisplay}>
                 sound on for a better experience :D
