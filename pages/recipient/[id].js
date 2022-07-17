@@ -113,10 +113,10 @@ export default function Recipient(props) {
     dragFriction: 0.12,
     duration: "4000",
     stagger: "2",
-    width: "11px",
-    height: "11px",
+    width: "16px",
+    height: "16px",
     perspective: "650px",
-    colors: ["#a864fd", "#29cdff", "#78ff44", "#ff718d", "#fdff6a"]
+    colors: ["#FBE3FC", "#F6E6A9", "#D0EDC2", "#B9E3F4", "#F9DBC0"]
   };
 
   return (
@@ -143,7 +143,7 @@ export default function Recipient(props) {
               <h3 className={styles.botText}>
                 specially made for {recipientName}
               </h3>
-              <h3 className={styles.soundText}>
+              <h3 className={!giftClicked ? styles.soundText : styles.noDisplay}>
                 sound on for a better experience :D
               </h3>
               <div className={!giftClicked ? styles.box : styles.noDisplay}>
