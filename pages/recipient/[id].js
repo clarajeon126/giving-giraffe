@@ -141,7 +141,7 @@ export default function Recipient(props) {
                 src="/confetti.mp3"
                 volume={0.05}
                 preload={true}
-                playing={confOn}
+                playing={true}
               />
         {!cardOpen ? (
         <div>
