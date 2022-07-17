@@ -17,6 +17,7 @@
     "react-dnd-html5-backend": "^16.0.1",
     "react-dom": "18.2.0",
     "react-dom-confetti": "^0.2.0",
+    "react-howler": "^5.2.0",
     "react-responsive": "^9.0.0-beta.10",
     "three": "^0.142.0"
   },
