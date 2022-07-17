@@ -10,11 +10,10 @@ export default function Fern({ ...props }) {
   const { nodes, materials } = useGLTF('/foliage/ferncp.glb')
   return (
     <group ref={group} {...props} dispose={null}>
-      <group position={[0, 0, -0.01]} rotation={[0.22, 0, 0]} scale={[0.08, 0.07, 0.08]}>
-        <mesh geometry={nodes.Cylinder011.geometry} material={materials['Material.051']} />
-        <mesh geometry={nodes.Cylinder011_1.geometry} material={materials['Material.052']} />
-      </group>
+      <mesh geometry={nodes.fern001.geometry} material={materials['Material.051']} position={[0, 0, -0.01]} rotation={[0.22, 0, 0]} scale={[0.08, 0.07, 0.08]} />
+      <mesh geometry={nodes.Sphere.geometry} material={materials['Material.003']} position={[0.15, 2.86, -0.2]} rotation={[-1.75, 0.02, 0.01]} scale={[0.09, 0.09, 0.18]} />
+      <mesh geometry={nodes.Sphere001.geometry} material={materials['Material.003']} position={[-0.12, 2.92, 0.14]} rotation={[-1.54, -0.36, 0.09]} scale={[0.09, 0.09, 0.18]} />
+      <mesh geometry={nodes.Sphere002.geometry} material={materials['Material.003']} position={[-0.08, 2.92, 0.45]} rotation={[-1.36, -0.19, -0.59]} scale={[0.09, 0.09, 0.18]} />
     </group>
   )
 }
-

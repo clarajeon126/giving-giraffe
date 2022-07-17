@@ -10,8 +10,7 @@ export default function Vase3({ ...props }) {
   const { nodes, materials } = useGLTF('/vase/vase3cp.glb')
   return (
     <group ref={group} {...props} dispose={null}>
-      <mesh geometry={nodes.yellow_vase.geometry} material={materials['Material.057']} position={[0, 0, -0.01]} scale={[0.3, 0.76, 0.3]} />
+      <mesh geometry={nodes.yellow_vase.geometry} material={materials['Material.002']} position={[0, 0, -0.01]} scale={[0.3, 0.76, 0.3]} />
     </group>
   )
 }
-

@@ -11,11 +11,9 @@ export default function Peonycream({ ...props }) {
   return (
     <group ref={group} {...props} dispose={null}>
       <group position={[0.03, 1.82, 0.01]} rotation={[0.04, 0.01, 0.24]} scale={[0.07, 0.07, 0.08]}>
-        <mesh geometry={nodes.maki001_1.geometry} material={materials.peony} />
-        <mesh geometry={nodes.maki001_2.geometry} material={materials.peony} />
-        <mesh geometry={nodes.maki001_3.geometry} material={materials['12973_anemone_flower.001']} />
+        <mesh geometry={nodes.maki001_1.geometry} material={materials['peony outside.001']} />
+        <mesh geometry={nodes.maki001_2.geometry} material={materials['12973_anemone_flower.001']} />
       </group>
     </group>
   )
 }
-

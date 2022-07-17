@@ -36,6 +36,7 @@ import Silvers from './foliage/Silvers';
 import Vase1 from './vase/Vase1';
 import Vase2 from './vase/Vase2';
 import Vase3 from './vase/Vase3';
+import Cosmoswhite from './filler/cosmos/Cosmoswhite';
 
 
 const canvasStyle = {
@@ -175,24 +176,28 @@ export const Arrangement = (props) => {
     else if(num == 2){
       return ( <Cosmospurple position={[0,0,0]} rotation-z={rotz} rotation-y={roty} scale={[3,4.5,3]}/> )
     }
-    //rosecream
+    //cosmoswhite
     else if(num == 3){
+      return ( <Cosmoswhite position={[0,0,0]} rotation-z={rotz} rotation-y={roty} scale={[3,4.5,3]}/> )
+    }
+    //rosecream
+    else if(num == 4){
       return ( <Rosecream position={[0,0,0]} rotation-z={rotz} rotation-y={roty} scale={[3,4.5,3]}/> )
     }
     //rosepeach
-    else if(num == 4){
+    else if(num == 5){
       return ( <Rosepeach position={[0,0,0]} rotation-z={rotz} rotation-y={roty} scale={[3,4.5,3]}/> )
     }
     //rosepink
-    else if(num == 5){
+    else if(num == 6){
       return ( <Rosepink position={[0,0,0]} rotation-z={rotz} rotation-y={roty} scale={[3,4.5,3]}/> )
     }
     //rosepurple
-    else if(num == 6){
+    else if(num == 7){
       return ( <Rosepurple position={[0,0,0]} rotation-z={rotz} rotation-y={roty} scale={[3,4.5,3]}/> )
     }
     //gypsy
-    else if(num == 7){
+    else if(num == 8){
       return ( <Gypsy position={[0,0,0]} rotation-z={rotz} rotation-y={roty} scale={[3.2,4.2,3.2]}/> )
     }
   }
