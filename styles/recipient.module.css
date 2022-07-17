@@ -30,9 +30,11 @@
     font-family: 'GT-Maru';
     z-index: 200;
 }
-.title {
-    width: 100%;
-    text-align: center;
+
+.soundText {
+    position: absolute;
+    right: 2vw;
+    bottom: 0vw;
 }
 
 .botText {

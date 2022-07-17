@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { Arrangement } from '../../components/Arrangement';
 import { Card } from '../../components/Card';
 import Confetti from 'react-dom-confetti';
+import ReactHowler from 'react-howler'
 
 import styles from '../../styles/recipient.module.css'
 import Image from 'next/image'
@@ -128,6 +129,12 @@ export default function Recipient(props) {
       </Head>
 
       <main className={styles.main}>
+      <ReactHowler
+                src="/magnolia.mp3"
+                loop={true}
+                volume={0.05}
+                playing={true}
+              />
         {!cardOpen ? (
         <div>
               <h1 className={styles.title}>
@@ -135,6 +142,9 @@ export default function Recipient(props) {
               </h1>
               <h3 className={styles.botText}>
                 specially made for {recipientName}
+              </h3>
+              <h3 className={styles.soundText}>
+                sound on for a better experience :D
               </h3>
               <div className={!giftClicked ? styles.box : styles.noDisplay}>
                 <Box clickFunc={boxClickedFunc} />
@@ -147,6 +157,8 @@ export default function Recipient(props) {
               <div  className={giftClicked ? styles.letterImg : styles.noDisplay} >
                 <Image onClick={() => {setCardOpen(true)}}  src={lettercover}/>
               </div>
+              
+
         </div>)
         : 
         (
