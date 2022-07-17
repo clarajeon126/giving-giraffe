@@ -285,7 +285,11 @@ export const Arrangement = (props) => {
 
 const Fallback = () => (
   <Html>
-    <div className={styles.title}>Loading...</div>
+    <div >
+      <h4 className={styles.loading} >
+        Loading...
+      </h4>
+    </div>
   </Html>
 )
 
