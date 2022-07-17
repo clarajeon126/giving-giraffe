@@ -50,9 +50,9 @@ import LeatherLeafFern from '../public/FlowerThumbnails/LeatherleafFern/leatherl
 
 //names for the 3d models to import separately
 let foliageNums = ["/foliage/silverscp.glb", "/foliage/dustycp.glb", "/foliage/ferncp.glb"]
-let fillerNums = ["/filler/cosmos/cosmospinkcp.glb", "/filler/cosmos/cosmospurplecp.glb",
-                  "/filler/rose/rosecreamcp.glb", "/filler/rose/rosepeachcp.glb",
-                  "/filler/rose/rosepinkcp.glb","/filler/rose/rosepurplecp.glb", "/filler/gypsycp.glb"]
+let fillerNums = ["/filler/cosmos/cosmospinkcp.glb", "/filler/cosmos/cosmospurplecp.glb", "/filler/cosmos/cosmoswhitecp.glb",
+                  "/filler/rose/rosecreamcp/glb", "/filler/rose/rosepeachcp/glb",
+                  "/filler/rose/rosepinkcp/glb","/filler/rose/rosepurplecp/glb", "/filler/gypsycp.glb"]
 let focalNums = ["/focal/anemone/anemoneorangecp.glb", "/focal/anemone/anemonepinkcp.glb", 
                   "/focal/anemone/anemonepurplecp.glb",  "/focal/anemone/anemonewhitecp.glb",
                   "/focal/peony/peonybluecp.glb", "/focal/peony/peonybpinkcp.glb", "/focal/peony/peonycreamcp.glb",
@@ -60,11 +60,10 @@ let focalNums = ["/focal/anemone/anemoneorangecp.glb", "/focal/anemone/anemonepi
 let vaseNums = ["/vase/vase1cp.glb", "/vase/vase2cp.glb", "/vase/vase3cp.glb"]
 
 
-
 export const VaseList = [
   [1, "White Vase", "Vase Subtext", WhiteVase],
   [2, "Red Vase", "Some call it early", OrangeVase],
-  [3, "Yellow Vase", "Vase Subtext", YellowVase]
+  [3, "Blue Vase", "Vase Subtext", YellowVase]
   ];
 
 export const FlowerList = [
@@ -103,24 +102,30 @@ export const FlowerList = [
     ],
     [
       3,
+      "White Cosmos",
+      "Flower Description",
+      WhiteYellowCosmos
+    ],
+    [
+      4,
       "Cream Spray Rose",
       "Flower Description",
       CreamSprayRose
     ],
     [
-      4,
+      5,
       "Light Peach Spray Rose",
       "Flower Description",
       LightPeachSprayRose
     ],
     [
-      5,
+      6,
       "Light Pink Spray Rose",
       "Flower Description",
       LightPinkSprayRose
     ],
     [
-      6,
+      7,
       "Light Purple Spray Rose",
       "Flower Description",
       LightPurpleSprayRose
