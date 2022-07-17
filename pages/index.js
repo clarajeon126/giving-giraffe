@@ -311,17 +311,163 @@ export default function Home() {
 
             </div>
             ) : (step == 2 ? (
-            "Customize Flowers"
+            <div>
+              <p className={styles.FlowerHeaderSizeMobile}>Foliage (one)</p>
+              {FlowerList && FlowerList[0].map((flower, position_index) => (
+                foliage == position_index ? (
+                  <div className={styles.flowerMobileSelected}>
+                  <Image src={flower[3]}></Image>
+                  <p className={styles.smallLabel}>{flower[1]}</p>
+                  </div>
+                ) : (
+                  <div className={styles.flowerMobile} onClick={ () => setFoliage(position_index)}>
+                  <Image src={flower[3]}></Image>
+                  <p className={styles.smallLabel}>{flower[1]}</p>
+                  </div>
+                  )
+
+                
+               ))
+              }
+              <p className={styles.FlowerHeaderSizeMobile}>Fillers (two)</p>
+              {FlowerList && FlowerList[1].map((flower, position_index) => (
+                fillers.includes(position_index) ? (
+                  <div className={styles.flowerMobileSelected} onClick={ () => 
+                    {
+                  if (fillers.includes(position_index)) {
+                    setFillers(fillers.filter(indexOfFlower => indexOfFlower != position_index))
+                  } else if (fillers.length < 2) {
+                    setFillers(oldArray => [...oldArray, position_index])
+                   } else {
+                    const currentFillers = fillers.pop()
+                    setFillers(oldArray => [...oldArray, position_index])
+                   }
+                    }}>
+                  <Image src={flower[3]}></Image>
+                  
+                  <p className={styles.smallLabel}>{flower[1]}</p>
+                  </div>
+                ) : (
+                  <div className={styles.flowerMobile} onClick={ () => 
+                  {
+                if (fillers.includes(position_index)) {
+                  setFillers(fillers.filter(indexOfFlower => indexOfFlower != position_index))
+                } else if (fillers.length < 2) {
+                  setFillers(oldArray => [...oldArray, position_index])
+                 } else {
+                  const currentFillers = fillers.pop()
+                  setFillers(oldArray => [...oldArray, position_index])
+                 }
+                  }}
+                  >
+                  <Image src={flower[3]}></Image>
+                  <p className={styles.smallLabel}>{flower[1]}</p>
+                  </div>
+                  )
+
+                
+               ))
+              }
+              <p className={styles.FlowerHeaderSizeMobile}>Focal (one)</p>
+              {FlowerList && FlowerList[2].map((flower, position_index) => (
+                focal == position_index ? (
+                  <div className={styles.flowerMobileSelected}>
+                  <Image src={flower[3]}></Image>
+                  <p className={styles.smallLabel}>{flower[1]}</p>
+                  </div>
+                ) : (
+                  <div className={styles.flowerMobile} onClick={ () => setFocal(position_index)}>
+                  <Image src={flower[3]}></Image>
+                  <p className={styles.smallLabel}>{flower[1]}</p>
+                  </div>
+                  )
+
+                
+               ))
+              }
+            </div>
             ) :
             (step == 3 ? 
-            ("Write Note Here")
+            (
+              <div>
+                                <div>
+                  <input className={styles.checkbox} type="checkbox" 
+                  defaultChecked={noteChoice}
+                  onChange={() => {
+                    setNoteChoice(!noteChoice)
+                    setNoteContent("")
+                    setNoteRecipient("")
+                    setNoteGifter("")
+                  }}
+                  ></input>
+                  <label className={styles.checkLabel}>I would like to include a note</label>
+                </div>
+                
+                {noteChoice ? (
+                  <div className={styles.entirenote}>
+                  <div>
+                  <label className={styles.inputLabel} for="fname">To: </label>
+                  <input className={styles.ToInput}  onChange={(e) => {setNoteRecipient(btoa(e.target.value))
+                  console.log(atob(noteRecipient))}}
+                  type="text" id="fname" name="fname"></input>
+                  </div>
+                  <div>
+                  <textarea onChange={(e) => {setNoteContent(btoa(e.target.value))
+                console.log(atob(noteContent) ) 
+                }}
+                  placeholder="Type your message here..."
+                  >
+
+                  </textarea>
+                  </div>
+                  <div>
+                  <label className={styles.inputLabel} for="fname">From: </label>
+                  <input className={styles.FromInput} onChange={(e) => {setNoteGifter(btoa(e.target.value))
+                  console.log(atob(noteGifter))}}
+                  type="text" id="fname" name="fname"></input>
+                  </div>
+                  </div>
+                ) : (
+                  null
+                  )} 
+               
+              </div>
+            
+
+              
+            )
             :
-            ("Link")
+            (
+              navigator.share ?
+              (<div className={styles.linkHolder} onClick={ () => {
+                navigator.share({
+                  title: "a gift",
+                  url: ("http://GivingGiraffe.co/Recipient/" + URL)
+                })
+            }}>
+              <text className={styles.link}>http://GivingGiraffe.co/Recipient/{URL}</text>
+              {!copy ? (          
+              <p className={styles.selectedLabel}>Share</p>) :       (<p className={styles.selectedLabel}>Shared</p>)}
+              </div>) : (
+                <div className={styles.linkHolder} onClick={ () => {
+                  navigator.clipboard.writeText("http://GivingGiraffe.co/Recipient/" + URL)
+                  setCopy(true)
+              }}>
+                <text className={styles.link}>http://GivingGiraffe.co/Recipient/{URL}</text>
+                {!copy ? (          
+                <p className={styles.selectedLabel}>Copy</p>) :       (<p className={styles.selectedLabel}>Copied to Clipboard</p>)}
+                </div>
+              )
+    
+            )
             ))}
           </div> 
         </div>): (
           <div className={styles.mobilePreview}>
-            <Arrangement vaseNum={vase} chosenFlowerArr={(fillers.length >= 2) ? [foliage + 1, fillers[0] + 1, fillers[1] + 1, focal + 1] : [foliage + 1, fillers[0] + 1, fillers[0] + 1, focal + 1]}/>
+        {step !== 3 ? 
+        (
+          <Arrangement vaseNum={vase} chosenFlowerArr={(fillers.length >= 2) ? [foliage + 1, fillers[0] + 1, fillers[1] + 1, focal + 1] : [foliage + 1, fillers[0] + 1, fillers[0] + 1, focal + 1]}/>
+        ) : (<Card Gifter={noteGifter} Recipient={noteRecipient} Content={noteContent} Preview={"true"}></Card>)}
           </div>
         )}
         {step !== 4 ? 
@@ -339,10 +485,15 @@ export default function Home() {
           {step !== 3 ? 
           (
           ((step == 1) && (vase !== -1)) || (step == 2) && foliage !== -1 && fillers !== -1 && focal !== -1 ? 
-          (<button className={styles.Button} onClick={ () => setStep(step + 1) }><strong className={styles.buttonText}>Next</strong></button>) :
-          (<button className={styles.ButtonOff} onClick={ () => setStep(step) }><strong className={styles.buttonText}>Next</strong></button>)
+          (<button className={styles.Button} onClick={ () => {
+            setStep(step + 1)
+            setpreviewMode(false)
+          } }><strong className={styles.buttonText}>Next</strong></button>) :
+          (<button className={styles.ButtonOff} onClick={ () => {setStep(step)
+            setpreviewMode(false)} }><strong className={styles.buttonText}>Next</strong></button>)
           ) : 
-          (<button className={styles.ButtonComplete} onClick={ () => URLGeneration() }><strong className={styles.buttonText}>Generate Gift</strong></button>)
+          (<button className={styles.ButtonComplete} onClick={ () => {URLGeneration()
+            setpreviewMode(false)} }><strong className={styles.buttonText}>Get Gift</strong></button>)
           }
         </div>) : null}
       </main>

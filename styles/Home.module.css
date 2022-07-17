@@ -449,12 +449,11 @@ cursor: copy;
   }
   .mobileMain {
     display: flex;
-    height: 100vh;
+    height: 100%;
     width: 100vw;
     flex-direction: column;
   }
   .brandName {
-    font-family: 'GT Maru Trial';
   font-style: normal;
   font-weight: 500;
   font-size: 36px;
@@ -466,7 +465,7 @@ cursor: copy;
   color: #241F1C;
   }
   .mobileStep {
-    height: calc(100vh - 192px);
+    height: calc((100vh - 192px));
     background: #FBF8E8;
     overflow: scroll;
     margin-left: 16px;
@@ -493,7 +492,7 @@ cursor: copy;
     font-family: 'GT-Maru';
     font-style: normal;
     font-weight: 500;
-    font-size: 32px;
+    font-size: 30px;
     line-height: 46px;
     margin-top: 0px;
     margin-bottom: 16px;
@@ -507,7 +506,6 @@ cursor: copy;
   }
 
   .mobileDescription {
-    font-family: 'GT Maru Trial';
     font-style: normal;
     font-weight: 400;
     font-size: 18px;
@@ -592,7 +590,7 @@ cursor: copy;
   }
 
   .mobilePreview {
-    height: calc(100vh - 192px);
+    height: calc((100vh - 192px));
     background: #7A4323;
     overflow: scroll;
     margin-left: 16px;
@@ -603,14 +601,72 @@ cursor: copy;
 
   .vaseItemMobile {
     height: 100%;
-    width: calc(75%);
     background-color: #7A4323;
     border-radius: 12px;
+    display: inline-block;
+    padding: 12px;
+    margin-bottom: 16px;
   }
   .mobileVaseListContainer {
-    display: flex;
-    width: fit-content;
+  
     flex-direction: row;
     overflow: scroll;
+  }
+  .vaseImageMobile {
+    background-color: #FBF8E8;
+    border-radius: 8px;
+  
+  }
+  .vaseImageMobileSelected {
+    background-color: #FFEF9C;
+    border-radius: 8px;
+  }
+
+  .vaseTitleMobile {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 25px;
+
+/* Yellow/Light */
+    margin-top: 12px;
+    margin-bottom: 12px;
+    color: #FBF8E8;
+
+  }
+  .flowerMobile {
+    height: 64px;
+    display: inline-block;
+    width: 64px;
+    background-color: #7A4323;
+    border-radius: 100%;
+    overflow: hidden;
+    margin-right: 12px;
+  }
+  .flowerMobileSelected {
+    height: 64px;
+    display: inline-block;
+    width: 64px;
+    background-color: #BA9E86;
+    border-radius: 100%;
+    overflow: hidden;
+    margin-right: 12px;
+  }
+
+  .linkHolder {
+    background: #FFEF9C;
+  border-radius: 16px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  word-wrap:break-word;
+  text-decoration-line: none;
+  
+  /* Brown */
+  
+  color: #7A4323;
+  padding: 24px;
+  cursor: copy;
   }
 }
