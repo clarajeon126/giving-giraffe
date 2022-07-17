@@ -166,9 +166,6 @@ export default function Recipient(props) {
                 <Image onClick={() => {setCardOpen(true)}}  src={lettercover}/>
               </div>) :
               (null)}
-              
-              
-
         </div>)
         : 
         (
