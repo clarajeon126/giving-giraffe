@@ -128,11 +128,19 @@ export default function Recipient(props) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
+      
+
       <main className={styles.main}>
       <ReactHowler
                 src="/magnolia.mp3"
                 loop={true}
                 volume={0.05}
+                playing={true}
+              />
+        <ReactHowler
+                src="/confetti.mp3"
+                volume={0.05}
+                preload={true}
                 playing={true}
               />
         {!cardOpen ? (
