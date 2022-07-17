@@ -6,6 +6,8 @@ import { useGLTF } from '@react-three/drei';
 import { useMediaQuery } from 'react-responsive'
 
 import PreviewFlowerIcon from '../public/PreviewFlower.svg'
+import CloseIcon from '../public/closepreview.svg'
+
 //components
 import { Arrangement } from '../components/Arrangement';
 import { Card } from '../components/Card';
@@ -292,7 +294,22 @@ export default function Home() {
           <p className={styles.mobileDescription}>{step == 1 ? ("The vase is an important often overlooked component of the flowering arrangement process. Be sure to choose wisely for the wrong vase may convey the wrong message.") : (step == 2 ? ("Select the flowers for your gift") : (step == 3 ? ("Optionally you can add a note") : ("We're delighted that you took the time to create a gift for someone using our tool. We hope your recipient appreciates your efforts as much as we do.")))}</p>
           <div className={styles.mobileStepContent}>
           {step == 1 ? (
-            "Select Vase"
+            <div className={styles.mobileVaseListContainer}>
+            {VaseList && VaseList.map((vaseArray, i) => (
+            
+            <div key={i} onClick={() => {
+              setVase(vaseArray[0])
+              }}>
+              {vase !== i + 1 ? (
+              <div className={styles.vaseItemMobile}> <Image src={vaseArray[3]} className={styles.vaseImageMobile}></Image><p className={styles.vaseTitleMobile}>{vaseArray[1]}</p> 
+              </div> ) : 
+              <div className={styles.vaseItemMobile}> <Image src={vaseArray[3]} className={styles.vaseImageMobileSelected}></Image><p className={styles.vaseTitleMobile}>{vaseArray[1]}</p>               
+              </div>}
+               
+            </div>
+            ))}
+
+            </div>
             ) : (step == 2 ? (
             "Customize Flowers"
             ) :
@@ -313,8 +330,12 @@ export default function Home() {
           (<button className={styles.Button} onClick={ () => setStep(step - 1) }><strong className={styles.buttonText}>Previous</strong></button>) : 
           (<button className={styles.ButtonOff} onClick={ () => setStep(step) }><strong className={styles.buttonText}>Previous</strong></button>)
           }
-          <button className={styles.ButtonPreview} onClick={ () => setpreviewMode(true) }><Image src={PreviewFlowerIcon} /></button>
-
+          {!previewMode ? (
+            <button className={styles.ButtonPreview} onClick={ () => setpreviewMode(true) }><Image src={PreviewFlowerIcon} /></button>
+          ) : (
+            <button className={styles.ButtonPreviewB} onClick={ () => setpreviewMode(false) }><Image src={CloseIcon}/></button>
+          )
+          }
           {step !== 3 ? 
           (
           ((step == 1) && (vase !== -1)) || (step == 2) && foliage !== -1 && fillers !== -1 && focal !== -1 ? 
