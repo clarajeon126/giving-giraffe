@@ -10,12 +10,10 @@ export default function Gypsy({ ...props }) {
   const { nodes, materials } = useGLTF('/filler/gypsycp.glb')
   return (
     <group ref={group} {...props} dispose={null}>
-      <group position={[0, 0, -0.01]} rotation={[2.2, 0.87, -2.8]} scale={0.01}>
-        <mesh geometry={nodes.Cylinder010.geometry} material={materials['Material.045']} />
-        <mesh geometry={nodes.Cylinder010_1.geometry} material={materials['Material.050']} />
-        <mesh geometry={nodes.Cylinder010_2.geometry} material={materials['Material.046']} />
+      <group scale={1.38}>
+        <mesh geometry={nodes.Cylinder_1.geometry} material={materials['Material.045']} />
+        <mesh geometry={nodes.Cylinder_2.geometry} material={materials['Material.001']} />
       </group>
     </group>
   )
 }
-
