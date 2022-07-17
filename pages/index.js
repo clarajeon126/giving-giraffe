@@ -15,7 +15,7 @@ import { Card } from '../components/Card';
 //vase
 import OrangeVase from '../public/FlowerThumbnails/Vases/OrangeVase.png'
 import WhiteVase from '../public/FlowerThumbnails/Vases/WhiteVase.png'
-import YellowVase from '../public/FlowerThumbnails/Vases/YellowVase.png'
+import YellowVase from '../public/FlowerThumbnails/Vases/BlueVase.png'
 
 //focal
 import DarkPurpleAnemone from '../public/FlowerThumbnails/Anemone/darkpurple.png'
