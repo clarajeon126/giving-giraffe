@@ -460,6 +460,7 @@ cursor: copy;
   font-size: 36px;
   line-height: 46px;
   margin-left: 16px;
+  margin-bottom: 16px;
   /* identical to box height */
   /* Black/Important */
   color: #241F1C;
@@ -470,6 +471,123 @@ cursor: copy;
     overflow: scroll;
     margin-left: 16px;
     margin-right: 16px;
+    border-radius: 16px;
     padding: 16px;
+  }
+
+  .mobileStepBreadCrumb {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    font-family: 'GT-Maru';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    /* identical to box height */
+    /* Brown */
+
+    color: #7A4323;
+  }
+
+  .mobileStepHeading {
+    font-family: 'GT-Maru';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 46px;
+    margin-top: 0px;
+    margin-bottom: 16px;
+    /* identical to box height */
+
+
+    /* Black/Important */
+
+    color: #241F1C;
+
+  }
+
+  .mobileDescription {
+    font-family: 'GT Maru Trial';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+
+    /* Black/Unimportant */
+
+    color: #6C635B;
+  }
+  .Button {
+    background-color: #FFEF9C;
+    color: inherit;
+    border: none;
+    font: inherit;
+    cursor: pointer;
+    font-size: 14px;
+    color: #7A4323;
+    outline: inherit;
+    width: calc(50% - 48px);
+    border-radius: 16px;
+  }
+  .ButtonOff {
+    opacity: 0.36;
+    background-color: #FFEF9C;
+    color: inherit;
+    border: none;
+    font: inherit;
+    color: #7A4323;
+    cursor: pointer;
+    outline: inherit;
+    width: calc(50% - 48px);
+    border-radius: 16px;
+  }
+  
+  .ButtonComplete {
+    background-color: #7A4323;
+    color: inherit;
+    border: none;
+    font: inherit;
+    color: #FFEF9C;
+    cursor: pointer;
+    outline: inherit;
+    width: calc(50% - 48px);
+    border-radius: 16px;
+  }
+
+  .ButtonPreview {
+    background-color: #FFEF9C;
+    color: inherit;
+    border: none;
+    font: inherit;
+    color: #FFEF9C;
+    cursor: pointer;
+    outline: inherit;
+    width: 64px;
+    border-radius: 16px;    
+  }
+  
+  .navigation {
+    margin-top: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 25px;
+    display: flex;
+    height: 60px;
+    margin-left: 16px;
+    margin-right: 16px;
+    justify-content: space-between;;
+  }
+  .buttonText {
+    font-size: 16px;
+  }
+
+  .mobilePreview {
+    height: calc(100vh - 192px);
+    background: #7A4323;
+    overflow: scroll;
+    margin-left: 16px;
+    margin-right: 16px;
+    border-radius: 16px;
+    
   }
 }

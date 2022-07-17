@@ -5,6 +5,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { useGLTF } from '@react-three/drei';
 import { useMediaQuery } from 'react-responsive'
 
+import PreviewFlowerIcon from '../public/PreviewFlower.svg'
 //components
 import { Arrangement } from '../components/Arrangement';
 import { Card } from '../components/Card';
@@ -192,6 +193,7 @@ export const FlowerList = [
 export default function Home() {
 
   const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1224px)' })
+  const [previewMode, setpreviewMode] = useState(false);
 
   const [vase, setVase] = useState(-1);
   const [reloading, setReloading] = useState(false);
@@ -283,6 +285,7 @@ export default function Home() {
 
       <main className={styles.mobileMain}>
         <h1 className={styles.brandName}>Giving Giraffe</h1>
+        {!previewMode ? (
         <div className={styles.mobileStep}>
           <p className={styles.mobileStepBreadCrumb}>Step {step == 1 ? ("One") : (step == 2 ? ("Two") : (step == 3 ? ("Three") : ("Complete")))}</p>
           <h2 className={styles.mobileStepHeading}>{step == 1 ? ("Select a vase") : (step == 2 ? ("Select Flowers") : (step == 3 ? ("Write a note") : ("Thank you")))}</h2>
@@ -298,8 +301,29 @@ export default function Home() {
             :
             ("Link")
             ))}
+          </div> 
+        </div>): (
+          <div className={styles.mobilePreview}>
+            <Arrangement vaseNum={vase} chosenFlowerArr={(fillers.length >= 2) ? [foliage + 1, fillers[0] + 1, fillers[1] + 1, focal + 1] : [foliage + 1, fillers[0] + 1, fillers[0] + 1, focal + 1]}/>
           </div>
-        </div>
+        )}
+        {step !== 4 ? 
+        (<div className={styles.navigation}>
+          {step !== 1 ? 
+          (<button className={styles.Button} onClick={ () => setStep(step - 1) }><strong className={styles.buttonText}>Previous</strong></button>) : 
+          (<button className={styles.ButtonOff} onClick={ () => setStep(step) }><strong className={styles.buttonText}>Previous</strong></button>)
+          }
+          <button className={styles.ButtonPreview} onClick={ () => setpreviewMode(true) }><Image src={PreviewFlowerIcon} /></button>
+
+          {step !== 3 ? 
+          (
+          ((step == 1) && (vase !== -1)) || (step == 2) && foliage !== -1 && fillers !== -1 && focal !== -1 ? 
+          (<button className={styles.Button} onClick={ () => setStep(step + 1) }><strong className={styles.buttonText}>Next</strong></button>) :
+          (<button className={styles.ButtonOff} onClick={ () => setStep(step) }><strong className={styles.buttonText}>Next</strong></button>)
+          ) : 
+          (<button className={styles.ButtonComplete} onClick={ () => URLGeneration() }><strong className={styles.buttonText}>Generate Gift</strong></button>)
+          }
+        </div>) : null}
       </main>
 
 
