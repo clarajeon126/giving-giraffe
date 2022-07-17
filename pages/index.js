@@ -707,10 +707,10 @@ export default function Home() {
             We're delighted that you took the time to create a gift for someone using our tool. We hope your recipient appreciates your efforts as much as we do. 
           </p>
           <div className={styles.linkHolder} onClick={ () => {
-            navigator.clipboard.writeText("http://GivingGiraffe.co/Recipient/" + URL)
+            navigator.clipboard.writeText("http://GivingGiraffe.xyz/recipient/" + URL)
             setCopy(true)
         }}>
-          <text className={styles.link}>http://GivingGiraffe.co/Recipient/{URL}</text>
+          <text className={styles.link}>http://GivingGiraffe.xyz/recipient/{URL}</text>
           {!copy ? (          
           <p className={styles.selectedLabel}>Click to copy link to clipboard</p>) :       (<p className={styles.selectedLabel}>Copied to Clipboard</p>)}
           </div>
