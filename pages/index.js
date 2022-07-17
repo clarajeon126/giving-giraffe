@@ -16,6 +16,7 @@ import { Card } from '../components/Card';
 import OrangeVase from '../public/FlowerThumbnails/Vases/OrangeVase.png'
 import WhiteVase from '../public/FlowerThumbnails/Vases/WhiteVase.png'
 import YellowVase from '../public/FlowerThumbnails/Vases/YellowVase.png'
+import BlueVase from '../public/FlowerThumbnails/Vases/BlueVase.png'
 
 //focal
 import DarkPurpleAnemone from '../public/FlowerThumbnails/Anemone/darkpurple.png'
@@ -63,7 +64,7 @@ let vaseNums = ["/vase/vase1cp.glb", "/vase/vase2cp.glb", "/vase/vase3cp.glb"]
 export const VaseList = [
   [1, "White Vase", "Vase Subtext", WhiteVase],
   [2, "Red Vase", "Some call it early", OrangeVase],
-  [3, "Blue Vase", "Vase Subtext", YellowVase]
+  [3, "Blue Vase", "Vase Subtext", BlueVase]
   ];
 
 export const FlowerList = [
