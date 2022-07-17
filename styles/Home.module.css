@@ -493,7 +493,7 @@ cursor: copy;
     font-family: 'GT-Maru';
     font-style: normal;
     font-weight: 500;
-    font-size: 32px;
+    font-size: 30px;
     line-height: 46px;
     margin-top: 0px;
     margin-bottom: 16px;
@@ -603,14 +603,55 @@ cursor: copy;
 
   .vaseItemMobile {
     height: 100%;
-    width: calc(75%);
     background-color: #7A4323;
     border-radius: 12px;
+    display: inline-block;
+    padding: 12px;
+    margin-bottom: 16px;
   }
   .mobileVaseListContainer {
-    display: flex;
-    width: fit-content;
+  
     flex-direction: row;
     overflow: scroll;
+  }
+  .vaseImageMobile {
+    background-color: #FBF8E8;
+    border-radius: 8px;
+  
+  }
+  .vaseImageMobileSelected {
+    background-color: #FFEF9C;
+    border-radius: 8px;
+  }
+
+  .vaseTitleMobile {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 25px;
+
+/* Yellow/Light */
+    margin-top: 12px;
+    margin-bottom: 12px;
+    color: #FBF8E8;
+
+  }
+  .flowerMobile {
+    height: 64px;
+    display: inline-block;
+    width: 64px;
+    background-color: #7A4323;
+    border-radius: 100%;
+    overflow: hidden;
+    margin-right: 12px;
+  }
+  .flowerMobileSelected {
+    height: 64px;
+    display: inline-block;
+    width: 64px;
+    background-color: #BA9E86;
+    border-radius: 100%;
+    overflow: hidden;
+    margin-right: 12px;
   }
 }
