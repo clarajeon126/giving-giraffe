@@ -456,7 +456,7 @@ export default function Home() {
                   url: ("http://GivingGiraffe.xyz/Recipient/" + URL)
                 })
             }}>
-              <text className={styles.link}>http://GivingGiraffe.xyz/Recipient/{URL}</text>
+              <text className={styles.link}>http://giving-giraffe.vercel.app//Recipient/{URL}</text>
               {!copy ? (          
               <p className={styles.selectedLabel}>Share</p>) :       (<p className={styles.selectedLabel}>Shared</p>)}
               </div>) : (
@@ -464,7 +464,7 @@ export default function Home() {
                   navigator.clipboard.writeText("http://GivingGiraffe.xyz/Recipient/" + URL)
                   setCopy(true)
               }}>
-                <text className={styles.link}>http://GivingGiraffe.xyz/Recipient/{URL}</text>
+                <text className={styles.link}>http://giving-giraffe.vercel.app/Recipient/{URL}</text>
                 {!copy ? (          
                 <p className={styles.selectedLabel}>Copy</p>) :       (<p className={styles.selectedLabel}>Copied to Clipboard</p>)}
                 </div>
