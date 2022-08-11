@@ -453,7 +453,7 @@ export default function Home() {
               (<div className={styles.linkHolder} onClick={ () => {
                 navigator.share({
                   title: "a gift",
-                  url: ("http://GivingGiraffe.xyz/Recipient/" + URL)
+                  url: ("http://giving-giraffe.vercel.app/Recipient/" + URL)
                 })
             }}>
               <text className={styles.link}>http://giving-giraffe.vercel.app//Recipient/{URL}</text>
@@ -461,7 +461,7 @@ export default function Home() {
               <p className={styles.selectedLabel}>Share</p>) :       (<p className={styles.selectedLabel}>Shared</p>)}
               </div>) : (
                 <div className={styles.linkHolder} onClick={ () => {
-                  navigator.clipboard.writeText("http://GivingGiraffe.xyz/Recipient/" + URL)
+                  navigator.clipboard.writeText("http://giving-giraffe.vercel.app/Recipient/" + URL)
                   setCopy(true)
               }}>
                 <text className={styles.link}>http://giving-giraffe.vercel.app/Recipient/{URL}</text>
@@ -718,10 +718,10 @@ export default function Home() {
             We're delighted that you took the time to create a gift for someone using our tool. We hope your recipient appreciates your efforts as much as we do. 
           </p>
           <div className={styles.linkHolder} onClick={ () => {
-            navigator.clipboard.writeText("http://GivingGiraffe.xyz/recipient/" + URL)
+            navigator.clipboard.writeText("http://giving-giraffe.vercel.app/recipient/" + URL)
             setCopy(true)
         }}>
-          <text className={styles.link}>http://GivingGiraffe.xyz/recipient/{URL}</text>
+          <text className={styles.link}>http://giving-giraffe.vercel.app/recipient/{URL}</text>
           {!copy ? (          
           <p className={styles.selectedLabel}>Click to copy link to clipboard</p>) :       (<p className={styles.selectedLabel}>Copied to Clipboard</p>)}
           </div>
